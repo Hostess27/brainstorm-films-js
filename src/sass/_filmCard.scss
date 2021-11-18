@@ -1,0 +1,100 @@
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery__list {
+  display: block;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -30px;
+    margin-left: -30px;
+  }
+}
+
+.gallery__item {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+
+  @media (min-width: 768px) {
+    flex-basis: calc(100% / 2 - 30px);
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+  @media (min-width: 1024px) {
+    flex-basis: calc(100% / 3 - 30px);
+  }
+}
+
+.gallery__item:hover,
+.gallery__item:focus {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery__image-wrapper {
+  object-fit: cover;
+  flex-grow: 1;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.gallery__image-wrapper img {
+  border-radius: 5px;
+}
+
+.gallery__info-genre {
+  display: flex;
+  align-items: baseline;
+  color: $theme-orange;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.gallery__info-name {
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.333;
+  margin: 10px 0 0 5px;
+}
+
+.gallery__info-item {
+  font-family: Roboto, sans-serif;
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.333;
+}
+
+//Відрізає від дати місяць і число, залишаючи лише рік
+.gallery__date {
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 5ch;
+}
+
+.gallery__info-rating {
+  padding: 3px 10px 1px 10px;
+  background-color: $theme-orange;
+  color: $white;
+  border-radius: 5px;
+  font-size: 12px;
+}
