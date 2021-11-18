@@ -7,7 +7,7 @@ const refs = {
     galleryList: document.querySelector('.main-container')
 };
 
-const apendFilmCardMarkup = searchForQuery(KEY, "Titanic", "1").then(({ results }) => {
+searchForQuery(KEY, "Titanic", "1").then(({ results }) => {
     return results;
 }).then((results)=> {
     if (results.length > 0) {
@@ -16,5 +16,3 @@ const apendFilmCardMarkup = searchForQuery(KEY, "Titanic", "1").then(({ results 
         alert('Nothing found!');
     };
 });
-
-export default apendFilmCardMarkup;
