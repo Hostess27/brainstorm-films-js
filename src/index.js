@@ -1,13 +1,10 @@
 import './sass/main.scss';
-import searchForQuery from'./search.js';
+import './templates/filmCard.hbs'
+import './js/searchingForQuery.js';
+import './js/filmCard';
 import {fetchTrending} from './js/api';
 import { renderGalleryTrendingMovie } from './js/render';
 import { error } from './js/notify';
-
-
-const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
-
-// searchForQuery(KEY, "Titanic", "1").then((o)=>console.log(o));
 
 
 window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
@@ -17,3 +14,4 @@ fetchTrending().then((data) =>  renderGalleryTrendingMovie(data)).catch(()=> err
           title: 'Error!',
           text: 'Loading Error',
         }))};
+
