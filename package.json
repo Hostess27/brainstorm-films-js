@@ -24,8 +24,10 @@
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
-  }, 
+  },
   "dependencies": {
+    "@pnotify/core": "^5.2.0",
+    "@pnotify/mobile": "^5.2.0",
     "autoprefixer": "^10.4.0",
     "axios": "^0.24.0",
     "handlebars": "^4.7.7",
