@@ -1,0 +1,20 @@
+
+{{#each this}}
+<li class="gallery__item" data-id="{{id}}">
+    <div class="gallery__image-wrapper">
+        {{#if poster_path}}
+        <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}">
+        {{else}}<img src="https://via.placeholder.com/294x441/808080/545454&text=NO POSTER :(">{{/if}}
+    </div>
+    <p class="gallery__info-name">{{title}}</p>
+    <ul class="gallery__info-genre">
+        <li class="gallery__info-item">
+            {{genre_ids}}
+        </li>
+        <li class="gallery__info-item gallery__date">
+            | {{release_date}}
+        </li>
+        <li class="gallery__info-item gallery__info-rating">{{vote_average}}</li>
+    </ul>
+</li>
+{{/each}}

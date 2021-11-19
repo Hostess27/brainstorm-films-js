@@ -7,7 +7,7 @@ const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
 //formValueFef-форма временная!!
 //ulListRef-список фильмов главной страницы- постоянный!!
 const formValueFef = document.querySelector(".search-button");
-const ulListRef = document.querySelector(".main-container");
+const ulListRef = document.querySelector(".gallery");
 
 //Считываю текст в инпуте 
 formValueFef.addEventListener('click',getFormTextContent);
