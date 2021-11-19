@@ -5,8 +5,10 @@
 
 // Стили для файла с примером HTML-фрагмента
 @import './example';
-@import './utils/_variables'; 
+@import './utils/_variables';
 @import './container';
 @import './main-container';
+@import './filmCard';
+@import './spinner';
 @import './modal';
 @import './filmCard';

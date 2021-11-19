@@ -1,17 +1,5 @@
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .gallery__item {
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
@@ -34,6 +22,9 @@ ul {
 }
 
 .gallery__image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 5px;
 }
 
@@ -43,6 +34,8 @@ ul {
   color: $theme-orange;
   margin-left: 5px;
   margin-bottom: 5px;
+  list-style: none;
+  padding: 0;
 }
 
 .gallery__info-name {
