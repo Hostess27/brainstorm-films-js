@@ -95,4 +95,4 @@ var t,e=arguments[3];!function(e,n){"object"==typeof exports&&"undefined"!=typeo
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./templates/filmCard.hbs"),require("./js/searchingForQuery.js"),require("./js/filmCard");var r=require("./js/api"),e=require("./js/render"),i=require("./js/notify");function n(){(0,r.fetchTrending)().then(r=>(0,e.renderGalleryTrendingMovie)(r)).catch(()=>(0,i.error)({title:"Error!",text:"Loading Error"}))}window.addEventListener("DOMContentLoaded",n);
 },{"./sass/main.scss":"clu1","./templates/filmCard.hbs":"rrA0","./js/searchingForQuery.js":"m50j","./js/filmCard":"EEE6","./js/api":"cZF8","./js/render":"Barx","./js/notify":"Kazp"}]},{},["Focm"], null)
-//# sourceMappingURL=/brainstorm-films-js/src.47d13ddf.js.map
+//# sourceMappingURL=/brainstorm-films-js/src.adf2d039.js.map
