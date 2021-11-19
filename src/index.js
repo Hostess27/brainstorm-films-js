@@ -1,7 +1,8 @@
 import './sass/main.scss';
-import './templates/filmCard.hbs'
+import './templates/filmCard.hbs';
 import './js/searchingForQuery.js';
-import './js/filmCard';
+import './js/filmCard.js';
+import './js/spinner.js';
 import {fetchTrending} from './js/api';
 import { renderGalleryTrendingMovie } from './js/render';
 import { error } from './js/notify';
