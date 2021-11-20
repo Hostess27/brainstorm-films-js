@@ -1,0 +1,162 @@
+.header {
+  position: fixed;
+  height: 230px;
+  padding-top: 40px;
+  background-color: black;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  color: $white;
+}
+// .header-relative {
+//   position: relative;
+//   //   height: 230px;
+// }
+
+// .header-wrapper {
+//   height: 230px;
+//   display: flex;
+// }
+
+.header__wrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  transition: 250ms $transition-cubic;
+
+  &:hover,
+  &:focus {
+    color: $theme-orange;
+    stroke: $theme-orange;
+  }
+}
+
+.header-logo__icon-film {
+  stroke: $logo-icon-grey;
+}
+
+.header-logo__icon-film--start {
+  margin-right: 10px;
+}
+
+.header-logo__site-name {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.667;
+}
+
+.header-nav {
+  display: flex;
+  align-items: baseline;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.header-nav--pos {
+  margin-left: auto;
+}
+
+.header-nav__item:first-child {
+  margin-right: 40px;
+}
+
+.header-nav__item--link-color {
+  color: inherit;
+  transition: 250ms $transition-cubic;
+}
+
+.header-nav__item--link-color:hover,
+.header-nav__item--link-color:focus {
+  color: $theme-orange;
+}
+
+.header-nav__item--current-link-color {
+  color: inherit;
+}
+
+.header-nav__item--current-link-color::after {
+  content: '';
+  display: block;
+  width: 100%;
+  background-color: $theme-orange;
+  height: 3px;
+}
+
+//-----------------------------
+
+.search-form-wrapper {
+  width: 336px;
+  border-bottom: 1px solid $white;
+  margin: 37px auto 0;
+}
+
+.search-form {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+}
+
+.search-form__input {
+  //   display: block;
+  background-color: transparent;
+  border: none;
+
+  outline: none;
+}
+
+.search-form__label,
+.search-form__input {
+  display: block;
+  color: $white;
+  font-size: 14px;
+  line-height: 1.142;
+}
+
+.search-form__label--pos {
+  margin-right: 10px;
+}
+
+.search-form__button {
+  display: block;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.search-form__button--pos {
+  margin-left: auto;
+}
+
+.search-form__button-icon-search {
+  stroke: $white;
+  transition: 250ms $transition-cubic;
+
+  &:hover,
+  &:focus {
+    stroke: $theme-orange;
+  }
+}
+
+.header-buttons__list {
+  display: flex;
+  margin: 45px auto 0;
+  justify-content: center;
+}
+
+.header-buttons__item:first-child {
+  margin-right: 15px;
+}
+
+//---------------------------------------------
+
+.header__icon-heart {
+  fill: $theme-orange;
+}
