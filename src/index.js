@@ -3,16 +3,6 @@ import './templates/filmCard.hbs';
 import './js/searchingForQuery.js';
 import './js/filmCard.js';
 import './js/spinner.js';
-import {fetchTrending} from './js/api';
-import { renderGalleryTrendingMovie } from './js/render';
-import { error } from './js/notify';
-
+import renderMovieOnStartPage from './js/renderMoviesOnStartPage';
 
 window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
-function renderMovieOnStartPage() { 
-      
-fetchTrending().then((data) =>  renderGalleryTrendingMovie(data)).catch(()=> error({
-          title: 'Error!',
-          text: 'Loading Error',
-        }))};
-
