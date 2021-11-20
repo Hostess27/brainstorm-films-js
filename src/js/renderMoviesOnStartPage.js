@@ -4,7 +4,16 @@ import { error } from './notify';
 
 function renderMovieOnStartPage() {
   fetchTrending()
-    .then(data => renderGalleryTrendingMovie(data))
+    .then(data => {
+      if (!data.length) {
+        () =>
+          error({
+            title: 'Error!',
+            text: 'Loading Error',
+          });
+      }
+      renderGalleryTrendingMovie(data);
+    })
     .catch(() =>
       error({
         title: 'Error!',
