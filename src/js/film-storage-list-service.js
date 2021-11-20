@@ -22,7 +22,7 @@ class FilmStorage
             {
                 if(arrFilms.includes(id))
                 {
-                    button.innerHTML = "ADD TO WATCHED";
+                    button.innerText = "ADD TO WATCHED";
                     const updatedArray = Array.from(arrFilms);
                     let index = updatedArray.indexOf(id);
                     updatedArray.splice(index, 1);
@@ -30,7 +30,7 @@ class FilmStorage
                 }
                 else
                 {
-                    button.innerHTML = "REMOVE FROM WATCHED";
+                    button.innerText = "REMOVE FROM WATCHED";
                     const updatedArray = Array.from(arrFilms);
                     updatedArray.push(id);
                     localStorage.setItem(this.#STORAGE_WHATCHED_LIST_KEY, JSON.stringify(updatedArray));
@@ -58,7 +58,7 @@ class FilmStorage
             {
                 if(arrFilms.includes(id))
                 {
-                    button.innerHTML = "REMOVE FROM WATCHED";
+                    button.innerText = "REMOVE FROM WATCHED";
                 }
             } 
         }
@@ -79,14 +79,14 @@ class FilmStorage
                     let index = updatedArray.indexOf(id);
                     updatedArray.splice(index, 1);
                     localStorage.setItem(this.#STORAGE_QUEUE_LIST_KEY, JSON.stringify(updatedArray));
-                    button.innerHTML = "ADD TO QUEUE";
+                    button.innerText = "ADD TO QUEUE";
                 }
                 else
                 {
                     const updatedArray = Array.from(arrFilms);
                     updatedArray.push(id);
                     localStorage.setItem(this.#STORAGE_QUEUE_LIST_KEY, JSON.stringify(updatedArray));
-                    button.innerHTML = "REMOVE FROM QUEUE";
+                    button.innerText = "REMOVE FROM QUEUE";
                 }
             } 
         }
@@ -111,7 +111,7 @@ class FilmStorage
             {
                 if(arrFilms.includes(id))
                 {
-                    button.innerHTML = "REMOVE FROM QUEUE";
+                    button.innerText = "REMOVE FROM QUEUE";
                 }
             } 
         }

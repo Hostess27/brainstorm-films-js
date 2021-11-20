@@ -8,6 +8,7 @@ import filmStorageListService from "./film-storage-list-service";
       closeModalBtn: document.querySelector('[data-modal-close]'),
       modal: document.querySelector('[data-modal]'),
       gallery: document.querySelector('.js-main-container'),
+      backdrop: document.querySelector('.backdrop'),
     };
 
     let addToWatched;
@@ -61,4 +62,17 @@ import filmStorageListService from "./film-storage-list-service";
         renderFilmDetails(element.dataset.id);
       }
     }
+
+    refs.backdrop.addEventListener('click', evt =>
+    {
+      const element = evt.target.closest('.modal');
+      if(element) return;
+       toggleModal();
+    });
+
+    //Слушатель Закрытие подалки по Esc
+    window.addEventListener('keydown', evt =>
+    {
+        if(evt.code === "Escape") toggleModal();;
+    });
   })();
