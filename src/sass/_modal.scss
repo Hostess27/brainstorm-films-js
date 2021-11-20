@@ -24,7 +24,7 @@ span {
     left: 50%;
 
     width: 100%;
-    max-height: 958px;
+    // max-height: 958px;
     max-width: 280px;
 
     padding: 48px 20px 41px;
@@ -39,14 +39,14 @@ span {
 
     @media screen and (min-width: 768px) and (max-width: 1024px) {
       top: 50%;
-      max-height: 562px;
+      // max-height: 562px;
       max-width: 618px;
       padding: 42px 30px 40px 28px;
     }
 
     @media screen and (min-width: 1024px) {
       top: 50%;
-      max-height: 568px;
+      // max-height: 568px;
       max-width: 882px;
       padding: 50px 30px 40px;
     }
@@ -108,16 +108,13 @@ span {
 
   .film-detail__image {
     display: block;
-    width: 240px;
     height: 356px;
 
     @media screen and (min-width: 768px) and (max-width: 1024px) {
-      width: 264px;
       height: 373px;
     }
 
     @media screen and (min-width: 1024px) {
-      width: 396px;
       height: 477px;
     }
   }
@@ -159,16 +156,26 @@ span {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    // margin-right: 41px;
+    width: 191px;
+
+    @media screen and (min-width: 1024px) {
+      width: 152px;
+    }
+
     & > span:not(:first-child) {
       margin-top: 10px;
     }
+  }
+
+  .film-detail__genre-value {
+    height: 16px;
   }
 
   .film-detail__values {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 51px;
     & > span:not(:first-child) {
       margin-top: 10px;
     }
@@ -200,6 +207,11 @@ span {
   color: #000000;
 }
 
+.film-detail__description-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .film-detail__description {
   // height: 236px;
   margin-top: 10px;
@@ -210,8 +222,6 @@ span {
   line-height: 1.66;
   text-align: left;
   color: #000000;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .film-details__buttons {
