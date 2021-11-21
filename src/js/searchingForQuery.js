@@ -11,7 +11,8 @@ const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
 
 //Считываю текст в инпуте 
-formValueFef.addEventListener('click',getFormTextContent);
+if(formValueFef!=null)formValueFef.addEventListener('click',getFormTextContent);
+
 
 
 function getFormTextContent(evt) {
