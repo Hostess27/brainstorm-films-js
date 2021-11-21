@@ -9,7 +9,6 @@
 
 @import './base/common';
 
-
 @import './utils/_variables';
 @import './container';
 @import './main-container';
@@ -21,7 +20,8 @@
 
 @import './library';
 
-
 @import './components/button';
 @import './layout/header';
 @import './footer.scss';
+
+@import './components/userAuthorization';
