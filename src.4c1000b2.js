@@ -93,4 +93,4 @@ module.exports=require("./lib/axios");
 },{"./api":"cZF8","./render":"Barx","./notify":"Kazp"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./templates/filmCard.hbs"),require("./js/searchingForQuery.js"),require("./js/spinner.js");var e=r(require("./js/renderMoviesOnStartPage"));function r(e){return e&&e.__esModule?e:{default:e}}window.addEventListener("DOMContentLoaded",e.default);
 },{"./sass/main.scss":"clu1","./templates/filmCard.hbs":"rrA0","./js/searchingForQuery.js":"m50j","./js/spinner.js":"Sc1o","./js/renderMoviesOnStartPage":"rLrB"}]},{},["Focm"], null)
-//# sourceMappingURL=/brainstorm-films-js/src.93707245.js.map
+//# sourceMappingURL=/brainstorm-films-js/src.4c1000b2.js.map
