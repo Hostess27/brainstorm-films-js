@@ -1,0 +1,29 @@
+.flex-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: $background-footer-pagination;
+  @media screen and (max-width: 768px) {
+    display: block;
+    text-align: center;
+  }
+}
+
+.creator {
+  color: $footer-text;
+}
+
+.developed {
+  background-color: $background-footer-pagination;
+  border: none;
+  text-decoration: underline;
+  color: $footer-text;
+}
+
+.creator {
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
