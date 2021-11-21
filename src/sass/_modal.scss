@@ -9,6 +9,7 @@ span {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
   width: 100%;
   height: 100%;
   background-color: $backdrop-background;
@@ -20,7 +21,7 @@ span {
 
   .modal {
     position: absolute;
-    top: 75%;
+    top: 50%;
     left: 50%;
 
     width: 100%;
@@ -38,14 +39,14 @@ span {
     border-radius: 4px;
 
     @media screen and (min-width: 768px) and (max-width: 1024px) {
-      top: 50%;
+      // top: 50%;
       // max-height: 562px;
       max-width: 618px;
       padding: 42px 30px 40px 28px;
     }
 
     @media screen and (min-width: 1024px) {
-      top: 50%;
+      // top: 50%;
       // max-height: 568px;
       max-width: 882px;
       padding: 50px 30px 40px;
@@ -157,7 +158,7 @@ span {
     flex-direction: column;
     justify-content: space-between;
     // margin-right: 41px;
-    width: 191px;
+    width: 108px;
 
     @media screen and (min-width: 1024px) {
       width: 152px;
