@@ -11,9 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
 </head>
 
+
 <body>
+  <include src="./partials/userAuthorization.html"></include>
   <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-  <button class="test-btn" data-modal-open>Открыть модалку</button>
   <include src="./partials/header-index.html"></include>
   <!-- <include src="./partials/header-liberary.html"></include> -->
   <!-- <include src="./partials/elements.html"></include> -->
@@ -23,7 +24,7 @@
   <include src="./partials/modal.html"></include>
   <include src="./partials/spinner.html"></include>
   <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-  <script src="./index-main-page.js"></script>
+  <script src="./index.js"></script>
 </body>
 
 </html>
