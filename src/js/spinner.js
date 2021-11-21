@@ -9,5 +9,6 @@ function addSpinner() {
 };
 
 function removeSpinner() {
-    refs.spinner.forEach(elem => elem.classList.add('visually-hidden'));
+  refs.spinner.classList.add('visually-hidden');
+  refs.spinnerWraper.classList.add('visually-hidden');
 };
