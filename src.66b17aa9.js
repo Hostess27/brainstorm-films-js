@@ -21,7 +21,7 @@ var t,e=arguments[3];!function(e,n){"object"==typeof exports&&"undefined"!=typeo
 },{"@pnotify/core":"txz9","@pnotify/core/dist/PNotify.css":"clu1","@pnotify/mobile/dist/PNotifyMobile.css":"clu1","@pnotify/core/dist/BrightTheme.css":"clu1","@pnotify/mobile/dist/PNotifyMobile.js":"ad6a"}],"m50j":[function(require,module,exports) {
 "use strict";var e=n(require("./responseForQuery")),t=n(require("../templates/filmCard.hbs")),r=require("./notify.js");function n(e){return e&&e.__esModule?e:{default:e}}const s="c69608b9bc251fbb333be1b2d7a49ce6",u=document.querySelector(".search-button"),l=document.querySelector(".gallery");function i(n){n.preventDefault(),""!=u.previousElementSibling.value&&(l.innerHTML="",(0,e.default)(s,u.previousElementSibling.value,"1").then(e=>{const n=e.total_results,s=e.results,i=e.total_pages;s.length>0?((0,r.success)({title:"Success!",text:`Success! There are ${n} films in ${i} page(s)`}),l.insertAdjacentHTML("afterbegin",(0,t.default)(s))):(u.previousElementSibling.value="",(0,r.error)({title:"Error!",text:"Nothing found!"}))}))}u.addEventListener("click",i);
 },{"./responseForQuery":"pqlU","../templates/filmCard.hbs":"rrA0","./notify.js":"Kazp"}],"Sc1o":[function(require,module,exports) {
-const e={spinner:document.querySelector(".spinner"),spinnerWraper:document.querySelector(".spin-wrapper")};function n(){e.spinner.classList.remove("visually-hidden"),e.spinnerWraper.classList.remove("visually-hidden")}function s(){e.spinner.forEach(e=>e.classList.add("visually-hidden"))}
+const e={spinner:document.querySelector(".spinner"),spinnerWraper:document.querySelector(".spin-wrapper")};function n(){e.spinner.classList.remove("visually-hidden"),e.spinnerWraper.classList.remove("visually-hidden")}function s(){e.spinner.classList.add("visually-hidden"),e.spinnerWraper.classList.add("visually-hidden")}
 },{}],"EDTP":[function(require,module,exports) {
 "use strict";module.exports=function(r,n){return function(){for(var t=new Array(arguments.length),e=0;e<t.length;e++)t[e]=arguments[e];return r.apply(n,t)}};
 },{}],"S1cf":[function(require,module,exports) {
@@ -93,4 +93,4 @@ module.exports=require("./lib/axios");
 },{"./api":"cZF8","./render":"Barx","./notify":"Kazp"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./templates/filmCard.hbs"),require("./js/searchingForQuery.js"),require("./js/spinner.js");var e=r(require("./js/renderMoviesOnStartPage"));function r(e){return e&&e.__esModule?e:{default:e}}window.addEventListener("DOMContentLoaded",e.default);
 },{"./sass/main.scss":"clu1","./templates/filmCard.hbs":"rrA0","./js/searchingForQuery.js":"m50j","./js/spinner.js":"Sc1o","./js/renderMoviesOnStartPage":"rLrB"}]},{},["Focm"], null)
-//# sourceMappingURL=/brainstorm-films-js/src.a6862508.js.map
+//# sourceMappingURL=/brainstorm-films-js/src.66b17aa9.js.map
