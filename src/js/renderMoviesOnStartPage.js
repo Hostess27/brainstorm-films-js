@@ -1,9 +1,12 @@
-import { fetchTrending } from './api';
+// import { fetchTrending } from './api';
+import  FetchFromTrendingMovies from './api'
 import { renderGalleryTrendingMovie } from './render';
 import { error } from './notify';
 
+const fetchFromTrendingMovies = new FetchFromTrendingMovies;
+
 function renderMovieOnStartPage() {
-  fetchTrending()
+  fetchFromTrendingMovies.fetchTrending()
     .then(data => {
       if (!data.length) {
         () =>
