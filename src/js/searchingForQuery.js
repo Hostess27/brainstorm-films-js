@@ -5,13 +5,14 @@ import { success, error } from './notify.js';
 //КОНСТАНТА- ключ к АPI
 const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
 
-//formValueFef-форма временная!!
-//ulListRef-список фильмов главной страницы- постоянный!!
-const formValueFef = document.querySelector(".search-button");
+//formValueFef-форма
+//ulListRef-список фильмов главной страницы
+const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
 
 //Считываю текст в инпуте 
-formValueFef.addEventListener('click',getFormTextContent);
+if(formValueFef!=null)formValueFef.addEventListener('click',getFormTextContent);
+
 
 
 function getFormTextContent(evt) {
