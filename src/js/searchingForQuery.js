@@ -33,8 +33,9 @@ function getFormTextContent(evt) {
                     ulListRef.insertAdjacentHTML('afterbegin', templateQuery(results));
                 } else {
                     formValueFef.previousElementSibling.value = "";
+                    ulListRef.insertAdjacentHTML('afterbegin', `<img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
                     error({
-                    title: 'Error!',
+                    title: 'OOPS!',
                     text: 'Nothing found!',
                     })
                 }
