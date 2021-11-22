@@ -126,4 +126,4 @@ var e,t=arguments[3];!function(t,n){"object"==typeof exports&&"undefined"!=typeo
 },{"@pnotify/core":"txz9","firebase/app":"OJEJ","firebase/analytics":"JWp9","firebase/auth":"zKjx"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./templates/filmCard.hbs"),require("./js/searchingForQuery.js"),require("./js/spinner.js");var e=r(require("./js/renderMoviesOnStartPage"));function r(e){return e&&e.__esModule?e:{default:e}}require("./js/firebaze.js"),window.addEventListener("DOMContentLoaded",e.default);
 },{"./sass/main.scss":"clu1","./templates/filmCard.hbs":"rrA0","./js/searchingForQuery.js":"m50j","./js/spinner.js":"Sc1o","./js/renderMoviesOnStartPage":"rLrB","./js/firebaze.js":"IiH6"}]},{},["Focm"], null)
-//# sourceMappingURL=/brainstorm-films-js/src.7f512bce.js.map
+//# sourceMappingURL=/brainstorm-films-js/src.8ea4bb1c.js.map
