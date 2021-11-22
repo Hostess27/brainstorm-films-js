@@ -1,19 +1,41 @@
+.footer-color {
+  display: flex;
+  justify-content: center;
+  background-color: $background-footer-pagination;
+}
+
 .flex-footer {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: $background-footer-pagination;
+  margin: 0;
 
   @media screen and (max-width: 768px) {
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
   }
+}
+
+.flex-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .creator {
   color: $footer-text;
+  font-size: 16px;
+  line-height: 1.18;
+  margin: 0;
+  white-space: nowrap;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.14;
+  }
 }
 
 .developed {
@@ -21,10 +43,53 @@
   border: none;
   text-decoration: underline;
   color: $footer-text;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1.18;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    line-height: 1.14;
+  }
+
+  &:hover,
+  &:focus {
+    color: $theme-orange;
+  }
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
-.creator {
-  @media screen and (max-width: 768px) {
-    margin-bottom: 20px;
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.75);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(0.75);
   }
 }
+
+
+
+.icon-heard {
+  fill: $theme-orange;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  &:hover {
+    animation: heartbeat 1s infinite;
+  }
+}
+
