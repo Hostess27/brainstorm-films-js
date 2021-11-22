@@ -1,0 +1,95 @@
+.backdrop-team {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: $backdrop-background;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms $transition-cubic, visibility 250ms $transition-cubic;
+
+  overflow-y: scroll;
+
+  .modal-team {
+    position: absolute;
+    top: 131%;
+    left: 50%;
+
+    width: 100%;
+    // max-height: 958px;
+    max-width: 280px;
+
+    padding: 48px 20px 41px;
+    background-color: $modal-background;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: transform 250ms $transition-cubic, opacity 250ms $transition-cubic;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      top: 93%;
+      // max-height: 562px;
+      max-width: 618px;
+      padding: 42px 30px 40px 28px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      top: 50%;
+      // max-height: 568px;
+      max-width: 882px;
+      padding: 50px 30px 40px;
+    }
+  }
+}
+
+.backdrop--is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  .modal-team {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.modal-team {
+  .modal-team__btn-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    padding: 0;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    background-color: $modal-background;
+    cursor: pointer;
+    fill: #000000;
+    transition: fill 250ms $transition-cubic;
+  }
+
+  .modal-team__icon-close {
+    display: block;
+    width: 100%;
+  }
+
+  .modal-team_form-order {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.modal-team__btn-close {
+  &:hover,
+  &:focus {
+    fill: #ff6b01;
+  }
+}
+
+body.modal-team-open {
+  overflow: hidden;
+}
