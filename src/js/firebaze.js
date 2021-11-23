@@ -1,11 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { success, error, defaults, defaultModules, Stack } from '@pnotify/core';
+import { success, error} from '@pnotify/core';
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged,signOut  } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -21,34 +19,21 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 const auth = getAuth();
 const user = auth.currentUser;
 
+///////////////////////////////////////////////////////////////////////
+
 const userRef = document.querySelector(".user-registration");
 
-
-
+//Проверка- авторизован ли уже пользователь ранее
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        userRef.src = "https://img.icons8.com/color/48/000000/test-lab.png";
-                    userRef.width = "50";
+        userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/checked-user-male.png";
         userRef.title = `${user.email}"2xCLICK FOR EXIT"`;
         userRef.addEventListener('dblclick', exite);
-        function exite() {
-           
-            signOut(auth).then(() => {
-  userRef.src = "https://img.icons8.com/external-bearicons-gradient-bearicons/64/000000/external-user-essential-collection-bearicons-gradient-bearicons.png";
-                userRef.width = "45";
-                userRef.title = "";
-                
-}).catch((error) => {
-  // An error happened.
-});
-       }
-        
-        
-    } else {
+    }
+    else {
         const emailRef = document.getElementById('exampleInputEmail1');
         const passwordRef = document.getElementById('exampleInputPassword1');
         const formRef = document.getElementById('form-registration');
@@ -60,18 +45,19 @@ onAuthStateChanged(auth, (user) => {
         buttonRefReg.addEventListener('click', getValuesRegister);
         userRef.addEventListener('click', toggleUser)
 
-        function toggleUser() {
+        userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/add-user-male.png";
+       //Переключение появления формы при клике на иконку невошедшего пользователя
+function toggleUser() {
             formRef.classList.toggle('visually-hidden')
         }
-        //auth
 
+
+        
         function getValues(evt) {
             evt.preventDefault();
             const email = emailRef.value;
             const password = passwordRef.value;
     
-            console.log(email);
-
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
@@ -81,16 +67,18 @@ onAuthStateChanged(auth, (user) => {
                     })
                     //userRef.textContent = `${email}`;
                     formRef.classList.add('visually-hidden');
-                    userRef.src = "https://img.icons8.com/color/48/000000/test-lab.png";
-                    userRef.width = "50";
+                    userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/checked-user-male.png";
+               
                     userRef.title = `${email}"2xCLICK FOR EXIT" `;
 
                     buttonRefIn.removeEventListener('click', getValues);
 
                     // buttonRefReg.removeEventListener('click', getValuesRegister);
                     userRef.removeEventListener('click', toggleUser);
-
-                    console.log(user)
+//Переключение появления формы при клике на иконку невошедшего пользователя
+function toggleUser() {
+            formRef.classList.toggle('visually-hidden')
+        }  
                 })
                 .catch((err) => {
                     const errorCode = err.code;
@@ -100,15 +88,31 @@ onAuthStateChanged(auth, (user) => {
                         text: 'User not found. Register, please',
                     });
                 });
-
         }
-
-        //register
-        
     }
 })
 
 
+// Функция выхода из кабинета пользователя
+     function exite() {
+         signOut(auth)
+             .then(() => {
+                userRef.src ="https://img.icons8.com/ios-glyphs/30/ffffff/add-user-male.png";
+                userRef.title = "";
+            }
+            ).catch((err) => {
+            error({
+                        title: 'Exit!',
+                        text: 'Somthing bed',
+                    });
+            });
+                    }
+
+
+
+
+
+//Регистрация нового пользователя
 function getValuesRegister(evt) {
     evt.preventDefault();
     
@@ -117,7 +121,7 @@ function getValuesRegister(evt) {
     
             const email = emailRef.value;
             const password = passwordRef.value;
-            console.log(email);
+           
     
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
@@ -127,8 +131,8 @@ function getValuesRegister(evt) {
                         title: 'Success!',
                         text: 'Registration Success, press "Sign In"',
                     });
-                    userRef.src = "https://img.icons8.com/external-bearicons-gradient-bearicons/64/000000/external-user-essential-collection-bearicons-gradient-bearicons.png";
-                userRef.width = "45";
+                    userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/add-user-male.png";
+                // userRef.width = "45";
                 userRef.title = `${user.email}"2xCLICK FOR EXIT"`;
                     // buttonRefReg.removeEventListener('click', getValuesRegister); 
                 })
