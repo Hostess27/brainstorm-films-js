@@ -126,7 +126,7 @@ class FirebaseStorage
       {
         error({
             title: 'Not Authorized!',
-            text: 'You must be logged in to add movies to "Watched" and "Queue"!',
+            text: 'You must be logged in to add/remove movies to "Watched" and "Queue"!',
         });
       }
 }
