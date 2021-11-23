@@ -2,8 +2,6 @@ class FilmStorage
 {
     #STORAGE_WHATCHED_LIST_KEY;
     #STORAGE_QUEUE_LIST_KEY;
-    #addToWatched;
-    #addToQueue;
 
     constructor()
     {
@@ -13,7 +11,6 @@ class FilmStorage
 
     addFilmToWatchedList(id, button)
     {
-        this.#addToWatched = button;
         let obj = localStorage.getItem(this.#STORAGE_WHATCHED_LIST_KEY)
         if(obj)
         {
@@ -49,7 +46,6 @@ class FilmStorage
 
     updateWatchedBtn(id, button)
     {
-        this.#addToWatched = button;
         let obj = localStorage.getItem(this.#STORAGE_WHATCHED_LIST_KEY)
         if(obj)
         {
@@ -66,7 +62,6 @@ class FilmStorage
 
     addFilmToQueueList(id, button)
     {
-        this.#addToQueue = button;
         let obj = localStorage.getItem(this.#STORAGE_QUEUE_LIST_KEY)
         if(obj)
         {
@@ -102,7 +97,6 @@ class FilmStorage
 
     updateQueueBtn(id, button)
     {
-        this.#addToQueue = button;
         let obj = localStorage.getItem(this.#STORAGE_QUEUE_LIST_KEY)
         if(obj)
         {
