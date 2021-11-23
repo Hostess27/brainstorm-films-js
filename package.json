@@ -36,7 +36,6 @@
     "lodash.throttle": "^4.1.1",
     "normalize.css": "^8.0.1",
     "notifyjs": "^3.0.0",
-    "path": "^0.12.7",
     "tui-pagination": "^3.4.1"
   }
 }
