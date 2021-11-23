@@ -5,14 +5,12 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 // Запрос за популярными фильмами
 
-
 export default class FetchFromTrendingMovies {
-  constructor(){
-    this.page =1;
+  constructor() {
+    this.page = 1;
   }
 
-
-  async  fetchTrending() {
+  async fetchTrending() {
     try {
       const { data } = await axios.get(`/trending/movie/week?api_key=${API_KEY}&page=${this.page}`);
       this.incrementPage();
@@ -24,7 +22,6 @@ export default class FetchFromTrendingMovies {
           title: 'Error!',
           text: 'Loading Error',
         });
-
     }
   }
 
@@ -36,7 +33,6 @@ export default class FetchFromTrendingMovies {
     this.page = 1;
   }
 }
-
 
 // async function fetchTrending(pageValue = 1) {
 //   try {
@@ -54,3 +50,53 @@ export default class FetchFromTrendingMovies {
 // }
 
 // export { fetchTrending };
+
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+
+const newPage = new FetchFromTrendingMovies();
+
+const container = document.getElementById('tui-pagination-container');
+const options = {
+  totalItems: 500,
+  itemsPerPage: 10,
+  visiblePages: 10,
+  page: 1,
+  centerAlign: false,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+};
+const pagination = new Pagination(container, options);
+
+const zz = document.querySelector('strong');
+const a = document.querySelector('.tui-pagination');
+
+a.addEventListener('click', onLoadMore);
+
+function onLoadMore(e) {
+  e.preventDefault();
+  if (zz.classList.contains('tui-is-selected') === true) {
+    let b = Number(e.target.textContent);
+    console.log('Page #', b);
+    newPage.page = b;
+    console.log(newPage.page);
+    newPage.fetchTrending();
+    // console.log(newPage.fetchTrending);
+  }
+}
