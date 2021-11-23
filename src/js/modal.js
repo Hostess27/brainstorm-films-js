@@ -36,6 +36,7 @@ import filmStorageListService from "./film-storage-list-service";
       addToWatched = document.querySelector('#add-to-watched');
       addToQueue = document.querySelector('#add-to-queue');
       filmId = document.querySelector('.film-detail_id').dataset.id;
+    
 
       addToWatched.addEventListener('click', () =>
       {
