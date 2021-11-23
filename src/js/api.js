@@ -38,19 +38,4 @@ export default class FetchFromTrendingMovies {
 }
 
 
-// async function fetchTrending(pageValue = 1) {
-//   try {
-//     const { data } = await axios.get(`/trending/movie/week?api_key=${API_KEY}&page=${pageValue}`);
-//     return data.results;
-//   } catch (err) {
-//     () =>
-//       error({
-//         title: 'Error!',
-//         text: 'Loading Error',
-//       });
-//     // console.log(response.err);
-//     // throw err;
-//   }
-// }
 
-// export { fetchTrending };

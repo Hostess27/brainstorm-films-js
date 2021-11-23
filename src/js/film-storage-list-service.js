@@ -17,7 +17,7 @@ class FilmStorage
             let arrFilms = JSON.parse(obj);
             if(Array.isArray(arrFilms))
             {
-                if(arrFilms.includes(id))
+                if(arrFilms.includes(id))   
                 {
                     button.innerText = "ADD TO WATCHED";
                     const updatedArray = Array.from(arrFilms);
