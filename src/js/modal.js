@@ -1,8 +1,9 @@
 import { filmLoader } from "./modal-service";
 import ModalFilmRenderer from "./modal-renderer";
-import filmStorageListService from "./film-storage-list-service";
+import filmFirebaseStorage from "./film-firebase-storage";
 
-(() => {
+(() => 
+{
     const refs = 
     {
       closeModalBtn: document.querySelector('[data-modal-close]'),
@@ -37,18 +38,17 @@ import filmStorageListService from "./film-storage-list-service";
       addToQueue = document.querySelector('#add-to-queue');
       filmId = document.querySelector('.film-detail_id').dataset.id;
 
-      addToWatched.addEventListener('click', () =>
+      addToWatched.addEventListener('click', async () =>
       {
-        filmStorageListService.addFilmToWatchedList(filmId, addToWatched);
+        await filmFirebaseStorage.addOrRemoveWatchedFilm(filmId, addToWatched);
       });
 
       addToQueue.addEventListener('click', () =>
       {
-        filmStorageListService.addFilmToQueueList(filmId, addToQueue);
+        ///......
       });
 
-      filmStorageListService.updateWatchedBtn(filmId, addToWatched);
-      filmStorageListService.updateQueueBtn(filmId, addToQueue);
+      await filmFirebaseStorage.findFilmWatchedById(filmId, addToWatched);
     }
 
 
@@ -73,6 +73,6 @@ import filmStorageListService from "./film-storage-list-service";
     //Слушатель Закрытие подалки по Esc
     window.addEventListener('keydown', evt =>
     {
-        if(evt.code === "Escape") toggleModal();;
+        if(evt.code === "Escape" && document.body.classList.contains('modal-open')) toggleModal();
     });
   })();
