@@ -40,15 +40,16 @@ import filmFirebaseStorage from "./film-firebase-storage";
 
       addToWatched.addEventListener('click', async () =>
       {
-        await filmFirebaseStorage.addOrRemoveWatchedFilm(filmId, addToWatched);
+        await filmFirebaseStorage.addToWatched(filmId, addToWatched);
       });
 
-      addToQueue.addEventListener('click', () =>
+      addToQueue.addEventListener('click', async () =>
       {
-        ///......
+        await filmFirebaseStorage.addToQueue(filmId, addToQueue);
       });
 
       await filmFirebaseStorage.findFilmWatchedById(filmId, addToWatched);
+      await filmFirebaseStorage.findFilmQueueById(filmId, addToQueue);
     }
 
 

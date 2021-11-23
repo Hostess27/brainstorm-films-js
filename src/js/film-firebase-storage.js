@@ -1,7 +1,6 @@
-import { initializeApp, firebase } from "firebase/app";
-import 'firebase/firestore';
+import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore, collection, doc, addDoc, setDoc, updateDoc, getDoc, query, where, getDocs, deleteField } from "firebase/firestore"
+import { getFirestore, collection, doc, addDoc, setDoc, updateDoc, getDoc, query, where, getDocs, deleteField, deleteDoc } from "firebase/firestore"
 import { success, error, defaults, defaultModules, Stack } from '@pnotify/core';
 
 class FirebaseStorage
@@ -28,7 +27,7 @@ class FirebaseStorage
             // Initialize Firebase
         this.#app = initializeApp(this.#firebaseConfig);
         this.#auth = getAuth();
-        this.#database = getFirestore(this.#app);
+        this.#database = getFirestore();
       }
 
       checkUserLogin()
@@ -41,54 +40,18 @@ class FirebaseStorage
         return true;
       }
 
-      async addOrRemoveWatchedFilm(filmId, button)
-      {
-        if(await this.findFilmWatchedById(filmId, button))
-        {
-          await this.removeFromWatched(filmId, button);
-        }
-        else
-        {
-          await this.addToWatched(filmId, button);
-        }
-      }
-
       async addToWatched(filmId, button)
       {
           if(this.checkUserLogin())
           {
             try {
+              const isFinded = await this.findFilmWatchedById(filmId, button);
+              const method = isFinded? updateDoc : setDoc;
+              const data = isFinded? deleteField() : filmId;
               const userRef = collection(this.#database, this.#auth.currentUser.uid);
               const watchedRef = doc(userRef, this.#WATCHED_LIST);
-              await setDoc(watchedRef, { [filmId]: filmId }, {merge: true});
-              button.innerText = "REMOVE FROM WATCHED";
-            } catch (e) {
-              console.error("Error adding document: ", e);
-            }
-          }
-      }
-
-      async removeFromWatched(filmId, button)
-      {
-        if(this.checkUserLogin())
-          {
-            try {
-              const userRef = collection(this.#database, this.#auth.currentUser.uid);
-              const watchedRef = doc(userRef, this.#WATCHED_LIST);
-              const docSnap = await getDoc(watchedRef);
-              const data = docSnap.data();
-              delete data[filmId];
-              await updateDoc(watchedRef, data, {merge: true});
-              button.innerText = "ADD TO WATCHED";
-
-
-
-              // const userRef = collection(this.#database, this.#auth.currentUser.uid);
-              // const watchedRef = doc(userRef, this.#WATCHED_LIST);
-              // let updates = {};
-              // updates[filmId] = deleteField();             
-              // await updateDoc(watchedRef, updates, {merge: true});
-              // button.innerText = "ADD TO WATCHED";
+              await method(watchedRef, { [filmId]: data }, {merge: true});
+              this.findFilmWatchedById(filmId, button)
             } catch (e) {
               console.error("Error adding document: ", e);
             }
@@ -117,19 +80,46 @@ class FirebaseStorage
         return docSnap.data();
       }
 
-      removeFromWatched()
+      //QUEUE
+      async addToQueue(filmId, button)
       {
-
+          if(this.checkUserLogin())
+          {
+            try {
+              const isFinded = await this.findFilmQueueById(filmId, button);
+              const method = isFinded? updateDoc : setDoc;
+              const data = isFinded? deleteField() : filmId;
+              const userRef = collection(this.#database, this.#auth.currentUser.uid);
+              const queuedRef = doc(userRef, this.#QUEUE_LIST);
+              await method(queuedRef, { [filmId]: data }, {merge: true});
+              this.findFilmQueueById(filmId, button)
+            } catch (e) {
+              console.error("Error adding document: ", e);
+            }
+          }
       }
 
-      addToQueue()
+      async findFilmQueueById(filmId, button)
       {
-
+        const queuedRef = doc(this.#database, this.#auth.currentUser.uid, this.#QUEUE_LIST);
+        console.log('DOC QUEUE = ', queuedRef);
+        const docSnap = await getDoc(queuedRef);
+        button.innerText = "ADD TO QUEUE";
+        if (!docSnap.exists()) return false;
+        if(docSnap.get(filmId))
+        {
+          button.innerText = "REMOVE FROM QUEUE";
+          return true;
+        }
       }
 
-      removeFromQueue()
+      async getAllQueueListByUser()
       {
+        const queuedRef = doc(this.#database, this.#auth.currentUser.uid, this.#QUEUE_LIST);
+        const docSnap = await getDoc(queuedRef);
 
+        if (!docSnap.exists()) return null;
+        return docSnap.data();
       }
 
       showError()
