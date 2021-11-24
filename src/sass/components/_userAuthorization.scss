@@ -1,5 +1,6 @@
 .user-registration {
   position: absolute;
+  z-index: 2;
   top: 45px;
   right: 15px;
   cursor: pointer;
@@ -7,14 +8,15 @@
 
 .form-registration {
   position: absolute;
-  top: 75px;
-  right: 20px;
+  top: 30px;
+  right: 1px;
 }
 
 .form__position {
   display: flex;
   flex-wrap: wrap;
-  width: 210px;
+  padding: 50px;
+  width: 310px;
 }
 
 .form-control {
