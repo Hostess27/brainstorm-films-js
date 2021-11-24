@@ -1,34 +1,34 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, signOut } from "firebase/auth";
+import { initializeApp, getApp } from "firebase/app";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, doc, addDoc, setDoc, updateDoc, getDoc, query, where, getDocs, deleteField, deleteDoc } from "firebase/firestore"
 import { success, error, defaults, defaultModules, Stack } from '@pnotify/core';
 
 class FirebaseStorage
 {
-    #firebaseConfig = {
-      apiKey: "AIzaSyDU_jVwQj3ofKIjrlt71bYcLmK3IKEgkeU",
-      authDomain: "brainstorm-films.firebaseapp.com",
-      databaseURL: "https://brainstorm-films-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "brainstorm-films",
-      storageBucket: "brainstorm-films.appspot.com",
-      messagingSenderId: "1080764076592",
-      appId: "1:1080764076592:web:581cf43ae3341da05793f5"
+      #firebaseConfig = {
+        apiKey: "AIzaSyDU_jVwQj3ofKIjrlt71bYcLmK3IKEgkeU",
+        authDomain: "brainstorm-films.firebaseapp.com",
+        projectId: "brainstorm-films",
+        storageBucket: "brainstorm-films.appspot.com",
+        messagingSenderId: "1080764076592",
+        appId: "1:1080764076592:web:581cf43ae3341da05793f5",
+        measurementId: "G-9RYK671QQS"
       };
 
       #app;
       #auth;
       #database;
-      #userId;
       #WATCHED_LIST = "watched";
       #QUEUE_LIST = "queue";
 
       constructor()
       {
-            // Initialize Firebase
+        // Initialize Firebase
         this.#app = initializeApp(this.#firebaseConfig);
         this.#auth = getAuth();
-        this.#database = getFirestore();
+        this.#database = getFirestore(this.#app);
       }
+
 
       checkUserLogin()
       {
@@ -71,16 +71,6 @@ class FirebaseStorage
         }
       }
 
-      async getAllWatchedListByUser()
-      {
-        const watchedRef = doc(this.#database, this.#auth.currentUser.uid, this.#WATCHED_LIST);
-        const docSnap = await getDoc(watchedRef);
-
-        if (!docSnap.exists()) return null;
-        return docSnap.data();
-      }
-
-      //QUEUE
       async addToQueue(filmId, button)
       {
           if(this.checkUserLogin())
@@ -102,7 +92,6 @@ class FirebaseStorage
       async findFilmQueueById(filmId, button)
       {
         const queuedRef = doc(this.#database, this.#auth.currentUser.uid, this.#QUEUE_LIST);
-        console.log('DOC QUEUE = ', queuedRef);
         const docSnap = await getDoc(queuedRef);
         button.innerText = "ADD TO QUEUE";
         if (!docSnap.exists()) return false;
@@ -111,6 +100,15 @@ class FirebaseStorage
           button.innerText = "REMOVE FROM QUEUE";
           return true;
         }
+      }
+
+      async getAllWatchedListByUser()
+      {
+        const watchedRef = doc(this.#database, this.#auth.currentUser.uid, this.#WATCHED_LIST);
+        const docSnap = await getDoc(watchedRef);
+
+        if (!docSnap.exists()) return null;
+        return docSnap.data();
       }
 
       async getAllQueueListByUser()
@@ -131,4 +129,6 @@ class FirebaseStorage
       }
 }
 
-export default new FirebaseStorage();
+const filmFirebaseStorage = new FirebaseStorage();
+
+export { filmFirebaseStorage }

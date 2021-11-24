@@ -17,6 +17,7 @@
   line-height: 1.33;
   color: $white;
   text-transform: uppercase;
+  cursor: pointer;
 
   transition: 250ms $transition-cubic;
 }
@@ -33,6 +34,12 @@
   //   @extend %button;
   background-color: transparent;
   border: 1px solid $white;
+}
+
+.button--orange {
+  background-color: $theme-orange;
+  border: 1px solid $theme-orange;
+  color: $white;
 }
 
 .button--black {
