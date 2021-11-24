@@ -2,6 +2,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import FetchFromTrendingMovies from './api';
 import renderClickPageMovie from './renderMoviesOnStartPage'
+import { renderGalleryTrendingMovie } from './render';
 
 const trendingMovies = new FetchFromTrendingMovies()
 
@@ -102,8 +103,8 @@ pagination.on('afterMove', ({ page }) => {
   trendingMovies.clickPage = page
   pagination.getCurrentPage()
   console.log('pagination.getCurrentPage()', pagination.getCurrentPage())
-  // trendingMovies.fetchTrending().then(data => { console.log(page), renderClickPageMovie(data), console.log(trendingMovies.fetchTrending()), console.log(trendingMovies.page) })
-  renderClickPageMovie(page)
+  trendingMovies.fetchTrending().then(data => { console.log(page), renderGalleryTrendingMovie(data), console.log(trendingMovies.fetchTrending()), console.log(trendingMovies.page) })
+  // renderClickPageMovie(page)
   // console.log(renderClickPageMovie(page))
   console.log(page)
   
@@ -117,6 +118,10 @@ pagination.on('afterMove', ({ page }) => {
     // error handling
   });
 });
+
+
+
+
 
 
 console.log('pagination', pagination)
