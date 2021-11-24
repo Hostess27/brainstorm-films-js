@@ -20,10 +20,10 @@ function renderMovieOnStartPage() {
           });
       }
       renderGalleryTrendingMovie(data);
-      success({
-        title: 'Success!',
-        text: 'Loading Success! ',
-      });
+      // success({
+      //   title: 'Success!',
+      //   text: 'Loading Success! ',
+      // });
     
     })    
     .catch(() =>

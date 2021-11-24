@@ -26,14 +26,14 @@ function getFormTextContent(evt) {
                 const results = data.results;
                 const pages = data.total_pages;
                 if (results.length > 0) {
-                success({
-                title: 'Success!',
-                text: `Success! There are ${total} films in ${pages} page(s)`,
-                })
+                // success({
+                // title: 'Success!',
+                // text: `Success! There are ${total} films in ${pages} page(s)`,
+                // })
                     ulListRef.insertAdjacentHTML('afterbegin', templateQuery(results));
                 } else {
                     formValueFef.previousElementSibling.value = "";
-                    ulListRef.insertAdjacentHTML('afterbegin', `<img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
+                    ulListRef.insertAdjacentHTML('afterbegin', `<p>There are no movies in this list :(</p><img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
                     error({
                     title: 'OOPS!',
                     text: 'Nothing found!',
