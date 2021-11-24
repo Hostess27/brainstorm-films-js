@@ -127,4 +127,4 @@ const e=document.querySelector(".general"),s=document.querySelector(".header__in
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./templates/filmCard.hbs"),require("./js/searchingForQuery.js"),require("./js/spinner.js");var e=r(require("./js/renderMoviesOnStartPage"));function r(e){return e&&e.__esModule?e:{default:e}}require("./js/firebaze.js"),require("./js/heard"),require("./js/search-form-up.js"),require("./js/pagination.js"),require("./js/scroll.js"),window.addEventListener("DOMContentLoaded",e.default);
 },{"./sass/main.scss":"clu1","./templates/filmCard.hbs":"rrA0","./js/searchingForQuery.js":"m50j","./js/spinner.js":"Sc1o","./js/renderMoviesOnStartPage":"rLrB","./js/firebaze.js":"IiH6","./js/heard":"blbH","./js/search-form-up.js":"dG9O","./js/pagination.js":"o8lo","./js/scroll.js":"N8YO"}]},{},["Focm"], null)
-//# sourceMappingURL=/brainstorm-films-js/src.8415c29b.js.map
+//# sourceMappingURL=/brainstorm-films-js/src.9b77caac.js.map
