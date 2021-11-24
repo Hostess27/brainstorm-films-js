@@ -7,3 +7,5 @@ import './js/firebaze.js';
 import './js/heard';
 
 window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
+
+import './js/pagination.js';
