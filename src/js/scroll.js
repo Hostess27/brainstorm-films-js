@@ -127,27 +127,32 @@
 // }
 
 const general = document.querySelector('.general');
-// console.log(general);
+const headerGeneral = document.querySelector('.header__index');
+const headerLib = document.querySelector('.header__lib');
+console.log(headerGeneral);
+console.log(headerLib);
 
 const library = document.querySelector('.library');
-// console.log(library);
 
 // const spinner = document.querySelector('.loader');
-// console.log(spinner);
 
 const btnNav = document.querySelectorAll('.header-nav__item');
-// console.log(btnNav[1]);
+
+btnNav[0].addEventListener('click', () => {
+  console.log('General!');
+  general.classList.remove('is-hidden');
+  headerLib.classList.remove('is-hidden');
+
+  // spinner.classList.remove('is-hidden');
+  library.classList.add('is-hidden');
+});
 
 btnNav[1].addEventListener('click', () => {
   console.log('library!');
   general.classList.add('is-hidden');
+  headerGeneral.classList.add('is-hidden');
+
   // spinner.classList.add('is-hidden');
   library.classList.remove('is-hidden');
-});
-
-btnNav[0].addEventListener('click', () => {
-  console.log('library!');
-  general.classList.remove('is-hidden');
-  // spinner.classList.remove('is-hidden');
-  library.classList.add('is-hidden');
+  headerLib.classList.remove('is-hidden');
 });
