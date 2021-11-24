@@ -4,6 +4,10 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
 
 (() => 
 {
+  //События о изменениях в списках
+  let eventWatchedChanged = new Event("watched");
+  let eventQueueChanged = new Event("queue");
+
     const refs = 
     {
       closeModalBtn: document.querySelector('[data-modal-close]'),
@@ -15,6 +19,21 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
     let addToWatched;
     let addToQueue;
     let filmId;
+
+    let tabWatched = true;
+    let tabQueue = false;
+
+    //Подписываемся на события Переключения между списками в Library
+    document.addEventListener("watchedTab", () => 
+    {
+      tabWatched = true;
+      tabQueue = false;
+    });
+    document.addEventListener("queueTab", () =>  
+    {
+      tabWatched = false;
+      tabQueue = true;
+    });
 
     refs.closeModalBtn.addEventListener('click', toggleModal);
     refs.gallery.addEventListener('click', onFilmSelected);
@@ -40,11 +59,19 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
       addToWatched.addEventListener('click', async () =>
       {
         await filmFirebaseStorage.addToWatched(filmId, addToWatched);
+        if(location.href.includes('lib') && tabWatched) 
+        {
+          document.dispatchEvent(eventWatchedChanged);
+        }
       });
 
       addToQueue.addEventListener('click', async () =>
       {
         await filmFirebaseStorage.addToQueue(filmId, addToQueue);
+        if(location.href.includes('lib') && tabQueue) 
+        {
+          document.dispatchEvent(eventQueueChanged);
+        }
       });
 
       await filmFirebaseStorage.findFilmWatchedById(filmId, addToWatched);

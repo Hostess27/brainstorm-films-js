@@ -3,6 +3,9 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
 import { filmLoader } from "./library-service";
 import libraryRenderer from "./library-renderer";
 
+let eventSelectedWatchedTab = new Event('watchedTab');
+let eventSelectedQueueTab = new Event('queueTab');
+
 const refs =
 {
     btnWatched: document.querySelector('.js-button-watched-library'),
@@ -10,21 +13,29 @@ const refs =
     message: document.querySelector('.list-library__no-movie'),
 }
 
-refs.btnWatched.addEventListener('click', (e) =>
+
+//Подписываемся на события изменения списков
+document.addEventListener("watched", () => loadWatched());
+document.addEventListener("queue", () => loadQueue());
+
+
+refs.btnWatched.addEventListener('click', () =>
 {
+    document.dispatchEvent(eventSelectedWatchedTab);
     loadWatched();
     refs.btnWatched.classList.add("button--orange");
     refs.btnQueue.classList.remove("button--orange");
 });
 
-refs.btnQueue.addEventListener('click', (e) =>
+refs.btnQueue.addEventListener('click', () =>
 {
+    document.dispatchEvent(eventSelectedQueueTab);
     loadQueue();
     refs.btnWatched.classList.remove("button--orange");
     refs.btnQueue.classList.add("button--orange");
 });
 
-export function loadWatched() 
+function loadWatched() 
 {
     onAuthStateChanged(getAuth(), async (user) => 
     {
@@ -48,7 +59,7 @@ export function loadWatched()
       });
 }
 
-export function loadQueue() 
+function loadQueue() 
 {
     onAuthStateChanged(getAuth(), async (user) => 
     {
@@ -74,5 +85,3 @@ export function loadQueue()
 
 //загружаю список
 loadWatched();
-
-
