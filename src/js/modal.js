@@ -12,7 +12,7 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
     {
       closeModalBtn: document.querySelector('[data-modal-close]'),
       modal: document.querySelector('[data-modal]'),
-      gallery: document.querySelector('.js-main-container'),
+      gallery: document.querySelectorAll('.js-main-container'),
       backdrop: document.querySelector('.backdrop'),
     };
 
@@ -36,7 +36,10 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
     });
 
     refs.closeModalBtn.addEventListener('click', toggleModal);
-    refs.gallery.addEventListener('click', onFilmSelected);
+    for (let i = 0; i < refs.gallery.length; i++) 
+    {
+      refs.gallery[i].addEventListener('click', onFilmSelected);
+    }
   
     function toggleModal() 
     {
@@ -59,7 +62,7 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
       addToWatched.addEventListener('click', async () =>
       {
         await filmFirebaseStorage.addToWatched(filmId, addToWatched);
-        if(location.href.includes('lib') && tabWatched) 
+        if(tabWatched) 
         {
           document.dispatchEvent(eventWatchedChanged);
         }
@@ -68,7 +71,7 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
       addToQueue.addEventListener('click', async () =>
       {
         await filmFirebaseStorage.addToQueue(filmId, addToQueue);
-        if(location.href.includes('lib') && tabQueue) 
+        if(tabQueue) 
         {
           document.dispatchEvent(eventQueueChanged);
         }
