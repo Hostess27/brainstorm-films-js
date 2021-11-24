@@ -13,26 +13,16 @@ const refs =
 refs.btnWatched.addEventListener('click', (e) =>
 {
     loadWatched();
-    toggleButtons();
+    refs.btnWatched.classList.add("button--orange");
+    refs.btnQueue.classList.remove("button--orange");
 });
 
 refs.btnQueue.addEventListener('click', (e) =>
 {
     loadQueue();
-    toggleButtons();
+    refs.btnWatched.classList.remove("button--orange");
+    refs.btnQueue.classList.add("button--orange");
 });
-
-function tooggleMessage() 
-{
-    refs.message.classList.toggle('visually-hidden');
-}
-
-export function toggleButtons() 
-{
-    refs.btnWatched.classList.toggle("button--orange");
-    refs.btnQueue.classList.toggle("button--orange");
-}
-
 
 export function loadWatched() 
 {
@@ -40,13 +30,14 @@ export function loadWatched()
     {
         if (user) 
         {
+            refs.message.classList.add('visually-hidden');
             const data = await filmFirebaseStorage.getAllWatchedListByUser();
             const filmsIdArr = Object.keys(data);
-            if(filmsIdArr.length === 0) tooggleMessage();
+            if(filmsIdArr.length === 0) refs.message.classList.remove('visually-hidden');
             libraryRenderer.clear();
             filmsIdArr.map(async id => 
             {
-                const film = await filmLoader.loadFilmById(Number(id))
+                const film = await filmLoader.loadFilmById(Number(id));
                 libraryRenderer.render(film);
             });
         } 
@@ -63,13 +54,14 @@ export function loadQueue()
     {
         if (user) 
         {
+            refs.message.classList.add('visually-hidden');
             const data = await filmFirebaseStorage.getAllQueueListByUser();
             const filmsIdArr = Object.keys(data);
-            if(filmsIdArr.length === 0) tooggleMessage();
+            if(filmsIdArr.length === 0) refs.message.classList.remove('visually-hidden');
             libraryRenderer.clear();
             filmsIdArr.map(async id => 
             {
-                const film = await filmLoader.loadFilmById(Number(id))
+                const film = await filmLoader.loadFilmById(Number(id));
                 libraryRenderer.render(film);
             });
         } 
