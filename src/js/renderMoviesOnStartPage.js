@@ -20,8 +20,8 @@ function renderMovieOnStartPage() {
           });
       }
       renderGalleryTrendingMovie(data);
-          
-    })    
+              
+                  })    
     .catch(() =>
       error({
 
