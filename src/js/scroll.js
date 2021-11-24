@@ -125,3 +125,29 @@ window.addEventListener(
 //   // loadMoreBtn.disable();
 //   api.fetchTrending().then(renderGalleryTrendingMovie);
 // }
+
+const general = document.querySelector('.general');
+console.log(general);
+
+const library = document.querySelector('.library');
+console.log(library);
+
+const spinner = document.querySelector('.loader');
+console.log(spinner);
+
+const btnNav = document.querySelectorAll('.header-nav__item');
+console.log(btnNav[1]);
+
+btnNav[1].addEventListener('click', () => {
+  console.log('library!');
+  general.classList.add('is-hidden');
+  spinner.classList.add('is-hidden');
+  library.classList.remove('is-hidden');
+});
+
+btnNav[0].addEventListener('click', () => {
+  console.log('library!');
+  general.classList.remove('is-hidden');
+  spinner.classList.remove('is-hidden');
+  library.classList.add('is-hidden');
+});
