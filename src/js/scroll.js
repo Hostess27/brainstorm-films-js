@@ -1,16 +1,16 @@
-var throttle = require('lodash.throttle');
-import FetchFromTrendingMovies from './api';
-import { renderGalleryTrendingMovie } from './render';
-const api = new FetchFromTrendingMovies();
-window.addEventListener(
-  'scroll',
-  throttle(() => {
-    const documentRect = document.documentElement.getBoundingClientRect();
-    if (documentRect.bottom < document.documentElement.clientHeight + 150) {
-      api.fetchTrending().then(renderGalleryTrendingMovie);
-    }
-  }, 200),
-);
+//^ var throttle = require('lodash.throttle');
+// import FetchFromTrendingMovies from './api';
+// import { renderGalleryTrendingMovie } from './render';
+// const api = new FetchFromTrendingMovies();
+// window.addEventListener(
+//   'scroll',
+//   throttle(() => {
+//     const documentRect = document.documentElement.getBoundingClientRect();
+//     if (documentRect.bottom < document.documentElement.clientHeight + 150) {
+//       api.fetchTrending().then(renderGalleryTrendingMovie);
+//     }
+//   }, 200),
+//^ );
 
 // import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
@@ -127,27 +127,27 @@ window.addEventListener(
 // }
 
 const general = document.querySelector('.general');
-console.log(general);
+// console.log(general);
 
 const library = document.querySelector('.library');
-console.log(library);
+// console.log(library);
 
-const spinner = document.querySelector('.loader');
-console.log(spinner);
+// const spinner = document.querySelector('.loader');
+// console.log(spinner);
 
 const btnNav = document.querySelectorAll('.header-nav__item');
-console.log(btnNav[1]);
+// console.log(btnNav[1]);
 
 btnNav[1].addEventListener('click', () => {
   console.log('library!');
   general.classList.add('is-hidden');
-  spinner.classList.add('is-hidden');
+  // spinner.classList.add('is-hidden');
   library.classList.remove('is-hidden');
 });
 
 btnNav[0].addEventListener('click', () => {
   console.log('library!');
   general.classList.remove('is-hidden');
-  spinner.classList.remove('is-hidden');
+  // spinner.classList.remove('is-hidden');
   library.classList.add('is-hidden');
 });

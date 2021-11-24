@@ -6,6 +6,6 @@ const refs = {
 };
 
 export const renderGalleryTrendingMovie = function (objects) {
-  // refs.mainContainer.innerHTML = '';
+  refs.mainContainer.innerHTML = '';
   refs.mainContainer.insertAdjacentHTML('beforeend', filmCard(objects));
 };
