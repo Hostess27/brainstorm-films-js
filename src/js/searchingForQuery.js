@@ -26,10 +26,10 @@ function getFormTextContent(evt) {
                 const results = data.results;
                 const pages = data.total_pages;
                 if (results.length > 0) {
-                success({
-                title: 'Success!',
-                text: `Success! There are ${total} films in ${pages} page(s)`,
-                })
+                // success({
+                // title: 'Success!',
+                // text: `Success! There are ${total} films in ${pages} page(s)`,
+                // })
                     ulListRef.insertAdjacentHTML('afterbegin', templateQuery(results));
                 } else {
                     formValueFef.previousElementSibling.value = "";
