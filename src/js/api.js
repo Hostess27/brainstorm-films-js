@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 export default class FetchFromTrendingMovies {
   constructor(){
-    this.page =1;
+    this.page = 1;
   }
 
 
@@ -34,6 +34,14 @@ export default class FetchFromTrendingMovies {
 
   resetPage() {
     this.page = 1;
+  }
+
+get clickPage() {
+    return this.page;
+  }
+
+  set clickPage(newPage) {
+    this.page = newPage;
   }
 }
 

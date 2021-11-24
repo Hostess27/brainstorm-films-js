@@ -25,34 +25,33 @@ const user = auth.currentUser;
 ///////////////////////////////////////////////////////////////////////
 
 const userRef = document.querySelector(".user-registration");
+const emailRef = document.getElementById('exampleInputEmail1');
+const passwordRef = document.getElementById('exampleInputPassword1');
+const buttonRefIn = document.querySelector('.signIn');
 
 //Проверка- авторизован ли уже пользователь ранее
 onAuthStateChanged(auth, (user) => {
     if (user) {
         userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/checked-user-male.png";
-        userRef.title = `${user.email}"2xCLICK FOR EXIT"`;
+        userRef.title = `${user.email.match(/^([^@]*)@/)[1]} \n 2xCLICK FOR EXIT `;
         userRef.addEventListener('dblclick', exite);
     }
     else {
-        const emailRef = document.getElementById('exampleInputEmail1');
-        const passwordRef = document.getElementById('exampleInputPassword1');
-        const formRef = document.getElementById('form-registration');
-        const buttonRefIn = document.querySelector('.signIn');
-        const buttonRefReg = document.querySelector('.register');
-        
-
-        buttonRefIn.addEventListener('click', getValues);
-        buttonRefReg.addEventListener('click', getValuesRegister);
-        userRef.addEventListener('click', toggleUser)
-
         userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/add-user-male.png";
-       //Переключение появления формы при клике на иконку невошедшего пользователя
-function toggleUser() {
-            formRef.classList.toggle('visually-hidden')
-        }
-
-
+        buttonRefIn.nextElementSibling.addEventListener('click', getValuesRegister);
+        buttonRefIn.addEventListener('click', getValues);
         
+        userRef.addEventListener('click', toggleUser);
+        // userRef.nextElementSibling.firstElementChild.addEventListener('mouseout',toggleUser)
+
+       //Переключение появления формы при клике на иконку невошедшего пользователя
+        function toggleUser() {
+            userRef.nextElementSibling.classList.toggle('visually-hidden');
+            emailRef.value = "";
+            passwordRef.value = "";
+                }
+
+
         function getValues(evt) {
             evt.preventDefault();
             const email = emailRef.value;
@@ -60,29 +59,21 @@ function toggleUser() {
     
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    const user = userCredential.user;
+                    user = userCredential.user;
                     success({
                         title: 'Success!',
                         text: 'Authorization Success',
                     })
-                    //userRef.textContent = `${email}`;
-                    formRef.classList.add('visually-hidden');
+                
+                    userRef.nextElementSibling.classList.add('visually-hidden');
                     userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/checked-user-male.png";
                
-                    userRef.title = `${email}"2xCLICK FOR EXIT" `;
+                    userRef.title = `${email.match(/^([^@]*)@/)[1]} \n 2xCLICK FOR EXIT `;
 
                     buttonRefIn.removeEventListener('click', getValues);
-
-                    // buttonRefReg.removeEventListener('click', getValuesRegister);
                     userRef.removeEventListener('click', toggleUser);
-//Переключение появления формы при клике на иконку невошедшего пользователя
-function toggleUser() {
-            formRef.classList.toggle('visually-hidden')
-        }  
                 })
-                .catch((err) => {
-                    const errorCode = err.code;
-                    const errorMessage = err.message;
+                .catch(() => {
                     error({
                         title: 'Error!',
                         text: 'User not found. Register, please',
@@ -100,7 +91,7 @@ function toggleUser() {
                 userRef.src ="https://img.icons8.com/ios-glyphs/30/ffffff/add-user-male.png";
                 userRef.title = "";
             }
-            ).catch((err) => {
+            ).catch(() => {
             error({
                         title: 'Exit!',
                         text: 'Somthing bed',
@@ -108,37 +99,27 @@ function toggleUser() {
             });
                     }
 
-
-
-
-
 //Регистрация нового пользователя
 function getValuesRegister(evt) {
     evt.preventDefault();
     
-    const emailRef = document.getElementById('exampleInputEmail1');
-    const passwordRef = document.getElementById('exampleInputPassword1');
-    
-            const email = emailRef.value;
-            const password = passwordRef.value;
-           
+    const email = emailRef.value;
+    const password = passwordRef.value;
     
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     
                     const user = userCredential.user;
+                    userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/add-user-male.png";
+                    userRef.title = `${user.email.match(/^([^@]*)@/)[1]} \n 2xCLICK FOR EXIT`;
+                    
                     success({
                         title: 'Success!',
                         text: 'Registration Success, press "Sign In"',
                     });
-                    userRef.src = "https://img.icons8.com/ios-glyphs/30/ffffff/add-user-male.png";
-                // userRef.width = "45";
-                userRef.title = `${user.email}"2xCLICK FOR EXIT"`;
-                    // buttonRefReg.removeEventListener('click', getValuesRegister); 
+                    
                 })
-                .catch((err) => {
-                    const errorCode = err.code;
-                    const errorMessage = err.message;
+                .catch(() => {
                     error({
                         title: 'Error!',
                         text: 'Try another email',

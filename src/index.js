@@ -8,3 +8,6 @@ import './js/heard';
 import './js/search-form-up.js';
 
 window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
+
+import './js/pagination.js';
+import './js/scroll.js';
