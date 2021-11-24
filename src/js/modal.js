@@ -1,6 +1,6 @@
 import { filmLoader } from "./modal-service";
 import ModalFilmRenderer from "./modal-renderer";
-import filmFirebaseStorage from "./film-firebase-storage";
+import { filmFirebaseStorage } from "./film-firebase-storage";
 
 (() => 
 {
@@ -16,8 +16,6 @@ import filmFirebaseStorage from "./film-firebase-storage";
     let addToQueue;
     let filmId;
 
-    // updateBtnWatched();
-  
     refs.closeModalBtn.addEventListener('click', toggleModal);
     refs.gallery.addEventListener('click', onFilmSelected);
   
@@ -59,8 +57,6 @@ import filmFirebaseStorage from "./film-firebase-storage";
       const element = evt.target.closest('.gallery__item');
       if(element && element.dataset.id != undefined)
       {
-        console.log("ID = ", element.dataset.id);
-        console.log(await filmLoader.loadFilmById(element.dataset.id));
         renderFilmDetails(element.dataset.id);
       }
     }
