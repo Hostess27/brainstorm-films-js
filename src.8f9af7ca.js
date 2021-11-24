@@ -123,4 +123,4 @@ var t;!function(e,n){"object"==typeof exports&&"object"==typeof module?module.ex
 },{"tui-pagination":"jPMh","tui-pagination/dist/tui-pagination.css":"AjW3","./api":"cZF8","./renderMoviesOnStartPage":"rLrB"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./templates/filmCard.hbs"),require("./js/searchingForQuery.js"),require("./js/spinner.js");var e=r(require("./js/renderMoviesOnStartPage"));function r(e){return e&&e.__esModule?e:{default:e}}require("./js/firebaze.js"),require("./js/heard"),require("./js/pagination.js"),window.addEventListener("DOMContentLoaded",e.default);
 },{"./sass/main.scss":"clu1","./templates/filmCard.hbs":"rrA0","./js/searchingForQuery.js":"m50j","./js/spinner.js":"Sc1o","./js/renderMoviesOnStartPage":"rLrB","./js/firebaze.js":"IiH6","./js/heard":"blbH","./js/pagination.js":"o8lo"}]},{},["Focm"], null)
-//# sourceMappingURL=/brainstorm-films-js/src.6b0bc5ee.js.map
+//# sourceMappingURL=/brainstorm-films-js/src.8f9af7ca.js.map
