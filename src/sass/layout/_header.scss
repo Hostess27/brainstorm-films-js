@@ -184,12 +184,20 @@
   outline: none;
   width: 100%;
 }
+// .search-form:hover .search-form__label {
+//   transform: translateY(-120%);
+//   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
 
 .search-form__label {
   // min-width: 110px;
   width: 100%;
   position: absolute;
-  // transform: translateY(-120%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-form:hover .search-form__label {
+  transform: translateY(-120%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
