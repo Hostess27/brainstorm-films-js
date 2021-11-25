@@ -9,9 +9,14 @@ import './js/search-form-up.js';
 import refreshPageOnClickFilmoteka from'./js/refresh-page-on-click-filmoteka'
 import './js/pagination.js';
 import './js/scroll.js';
+
+import './js/library';
+
 import './js/library.js';
 import './js/modal.js';
 
 
 
+
 refreshPageOnClickFilmoteka();
+
