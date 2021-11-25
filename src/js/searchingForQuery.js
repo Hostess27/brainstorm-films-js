@@ -13,8 +13,6 @@ const ulListRef = document.querySelector(".gallery");
 //Считываю текст в инпуте 
 if(formValueFef!=null)formValueFef.addEventListener('click',getFormTextContent);
 
-
-
 function getFormTextContent(evt) {
     evt.preventDefault();
     if (formValueFef.previousElementSibling.value != "") {
@@ -31,6 +29,7 @@ function getFormTextContent(evt) {
                 // text: `Success! There are ${total} films in ${pages} page(s)`,
                 // })
                     ulListRef.insertAdjacentHTML('afterbegin', templateQuery(results));
+                    formValueFef.previousElementSibling.value = "";
                 } else {
                     formValueFef.previousElementSibling.value = "";
                     ulListRef.insertAdjacentHTML('afterbegin', `<p>There are no movies in this list :(</p><img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
