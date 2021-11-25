@@ -49,6 +49,10 @@ function loadWatched()
             filmsIdArr.map(async id => 
             {
                 const film = await filmLoader.loadFilmById(Number(id));
+                if(film.genres.length >= 3)
+                {
+                    film.genres = [...film.genres.slice(0, 3), {id: "00000", name: "other..."}];
+                }
                 libraryRenderer.render(film);
             });
         } 
@@ -73,6 +77,10 @@ function loadQueue()
             filmsIdArr.map(async id => 
             {
                 const film = await filmLoader.loadFilmById(Number(id));
+                if(film.genres.length >= 3)
+                {
+                    film.genres = [...film.genres.slice(0, 3), {id: "00000", name: "other..."}];
+                }
                 libraryRenderer.render(film);
             });
         } 
