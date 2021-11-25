@@ -10,9 +10,11 @@
     <p class="gallery__info-name">{{title}}</p>
     {{else}}<p class="gallery__info-name">No title</p>{{/if}}
     <ul class="gallery__info-genre">
-        {{#if genre_ids}}
+        {{#if genres}}
         <li class="gallery__info-item">
-            {{genre_ids}}
+            {{#each genres}}
+            {{#if @last}} {{name}}{{else}} {{name}}, {{/if}}
+            {{/each}}
         </li>
         {{else}}<li class="gallery__info-item">
             No genres
