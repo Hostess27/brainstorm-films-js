@@ -3,7 +3,6 @@ import { success, error} from '@pnotify/core';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged,signOut  } from "firebase/auth";
 
-import ModalFilmRenderer from './modal-renderer'
 // TODO: Add SDKs for Firebase products that you want to use
 
 // Your web app's Firebase configuration
@@ -43,11 +42,7 @@ onAuthStateChanged(auth, (user) => {
         buttonRefIn.addEventListener('click', getValues);
         
         userRef.addEventListener('click', toggleUser);
-        // userRef.nextElementSibling.firstElementChild.addEventListener('mouseout',toggleUser)
-        // window.addEventListener('click',()=>{userRef.nextElementSibling.classList.toggle('visually-hidden');
-        //     emailRef.value = "";
-        //     passwordRef.value = "";})
-
+       
        //Переключение появления формы при клике на иконку невошедшего пользователя
         function toggleUser() {
             userRef.nextElementSibling.classList.toggle('visually-hidden');
@@ -129,18 +124,13 @@ function getValuesRegister(evt) {
                         text: 'Try another email',
                     })
                 });
-        }
+};
 
 window.addEventListener('click', () => {
-    console.dir(window.event);
-    if (window.event.pageY >= 230 || window.event.pageX <= 900) userRef.nextElementSibling.classList.add('visually-hidden');
-    
+    if (window.event.pageY >= 230 || window.event.pageX <= window.event.view.screen.availWidth-264) userRef.nextElementSibling.classList.add('visually-hidden');
 });
 
 window.addEventListener('keydown', (e) => {
-    
-    if (e.keyCode==27) userRef.nextElementSibling.classList.add('visually-hidden');
-    
-})
+    if (e.keyCode == 27) userRef.nextElementSibling.classList.add('visually-hidden');
+});
         
-    
