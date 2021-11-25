@@ -13,8 +13,7 @@
 
   @media screen and (min-width: 768px) {
     margin-left: -30px;
-    // margin-top: -30px;
-    padding-top: 60px;
+        padding-top: 60px;
   }
 
 
@@ -23,7 +22,14 @@
 .gallery__item {
   display: block;
   list-style: none;
+  width: 100%;
+
   flex-basis: calc(100% / 1 - 30px);
+
+
+  @media screen and (max-width: 480px){
+    width: 440px;
+  }
 
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
@@ -32,27 +38,27 @@
   }
 
   @media screen and (min-width: 768px) {
+    width: 295px;
     flex-basis: calc(100% / 2 - 30px);
     margin-left: 30px;
-    // margin-top: 30px;
+    
   }
 
   @media screen and (min-width: 1024px) {
+    width: 273px;
     flex-basis: calc(100% / 3 - 30px);
     margin-left: 30px;
-    // margin-top: 30px;
+  
   }
 }
 
 
 
+// Позиционирование pnotify
 
 .pnotify {
   top: 132px;
-  
- 
-}
-
+   }
 
 [data-pnotify] .brighttheme-container{
   background: rgb(34,190,183);
