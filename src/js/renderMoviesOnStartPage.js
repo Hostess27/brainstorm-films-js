@@ -8,6 +8,7 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 
 const fetchFromTrendingMovies = new FetchFromTrendingMovies;
+window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
 
 function renderMovieOnStartPage() {
   fetchFromTrendingMovies.fetchTrending()
