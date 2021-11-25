@@ -10,3 +10,4 @@ window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
 
 import './js/pagination.js';
 import './js/scroll.js';
+import './js/library';
