@@ -13,13 +13,12 @@ const ulListRef = document.querySelector(".gallery");
 
 //Считываю текст в инпуте 
 if (formValueFef != null) formValueFef.addEventListener('click', getFormTextContent);
-addSpinner();
 
 function getFormTextContent(evt) {
     evt.preventDefault();
     if (formValueFef.previousElementSibling.value != "") {
-    
         ulListRef.innerHTML = ``;
+        addSpinner();
         searchForQuery(KEY, formValueFef.previousElementSibling.value, "1")
             .then((data) => {
                 //Общее кол-во найденных фильмов
