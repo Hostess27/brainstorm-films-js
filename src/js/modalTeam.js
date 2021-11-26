@@ -12,6 +12,7 @@ const refs = {
 function CloseModalTeam() {
     document.body.classList.remove('modal-team-open');
     refs.modalTeam.classList.add('backdrop--is-hidden');
+    defaultImgFlip();
 };
 
 function OpenModalTeam() {
@@ -37,3 +38,10 @@ window.addEventListener('keydown', evt => {
         });
     });
 })();
+
+// Повернення в початкове положення зображень членів команди
+function defaultImgFlip() {
+    refs.modalTeamFlip.forEach(element => {
+        element.style.removeProperty('transform');
+    });
+};
