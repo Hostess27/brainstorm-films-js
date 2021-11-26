@@ -1,6 +1,7 @@
 import searchForQuery from './responseForQuery';
 import templateQuery from '../templates/filmCard.hbs';
 import { success, error } from './notify.js';
+import {addSpinner, removeSpinner} from './spinner';
 
 //КОНСТАНТА- ключ к АPI
 const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
@@ -11,13 +12,13 @@ const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
 
 //Считываю текст в инпуте 
-if(formValueFef!=null)formValueFef.addEventListener('click',getFormTextContent);
+if (formValueFef != null) formValueFef.addEventListener('click', getFormTextContent);
 
 function getFormTextContent(evt) {
     evt.preventDefault();
     if (formValueFef.previousElementSibling.value != "") {
-    
         ulListRef.innerHTML = ``;
+        addSpinner();
         searchForQuery(KEY, formValueFef.previousElementSibling.value, "1")
             .then((data) => {
                 //Общее кол-во найденных фильмов
@@ -40,6 +41,7 @@ function getFormTextContent(evt) {
                     text: 'Nothing found!',
                     })
                 }
+                removeSpinner();
             });
     }
 }

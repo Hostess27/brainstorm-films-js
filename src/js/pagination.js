@@ -4,6 +4,7 @@ import FetchFromTrendingMovies from './api';
 import renderClickPageMovie from './render-movies-on-start-page';
 import { renderGalleryTrendingMovie, clearGalleryTrendingMovi } from './render';
 import { filmLoader } from './library-service';
+import { addSpinner, removeSpinner } from './spinner';
 
 const trendingMovies = new FetchFromTrendingMovies();
 
@@ -99,6 +100,7 @@ pagination.on('afterMove', async ({ page }) => {
   pagination.getCurrentPage();
   console.log('pagination.getCurrentPage()', pagination.getCurrentPage());
   clearGalleryTrendingMovi();
+  addSpinner();
   const data = await trendingMovies.fetchTrending();
   console.log('DATA', data);
   if (!data.length) {
@@ -115,6 +117,7 @@ pagination.on('afterMove', async ({ page }) => {
       film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
     }
     renderGalleryTrendingMovie(film);
+    removeSpinner();
   });
   //  console.log(page),
   //  renderGalleryTrendingMovie(data),

@@ -5,9 +5,11 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
 import '@pnotify/core/dist/BrightTheme.css';
 import { filmLoader } from './library-service';
+import {addSpinner, removeSpinner} from './spinner';
 
 const fetchFromTrendingMovies = new FetchFromTrendingMovies();
 window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
+addSpinner();
 
 async function renderMovieOnStartPage() {
   const data = await fetchFromTrendingMovies.fetchTrending();
@@ -26,6 +28,7 @@ async function renderMovieOnStartPage() {
       film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
     }
     renderGalleryTrendingMovie(film);
+    removeSpinner();
   });
 }
 export default renderMovieOnStartPage;
