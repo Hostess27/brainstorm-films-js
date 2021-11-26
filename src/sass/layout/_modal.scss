@@ -17,7 +17,7 @@ span {
   visibility: visible;
   transition: opacity 250ms $transition-cubic, visibility 250ms $transition-cubic;
 
-  overflow-y: scroll;
+  overflow: auto;
 
   .modal {
     position: absolute;
