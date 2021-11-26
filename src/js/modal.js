@@ -15,7 +15,10 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
       modal: document.querySelector('[data-modal]'),
       gallery: document.querySelectorAll('.js-main-container'),
       backdrop: document.querySelector('.backdrop'),
+      trailer: document.getElementById('#trailer'),
     };
+
+    refs.trailer.onload = () => console.log('refs.trailer = ', refs.trailer);
 
     let addToWatched;
     let addToQueue;
@@ -98,7 +101,8 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
     {
       const element = evt.target.closest('.modal');
       if(element) return;
-       toggleModal();
+      toggleModal();
+      refs.trailer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
     });
 
     //Слушатель Закрытие подалки по Esc
