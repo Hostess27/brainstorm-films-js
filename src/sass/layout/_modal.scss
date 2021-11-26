@@ -200,6 +200,25 @@ span {
   }
 }
 
+iframe {
+  margin-top: 10px;
+  width: 238px;
+  height: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 280px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 475px;
+    height: 237px;
+  }
+}
+
+.film-detail_trailer {
+  display: block;
+}
+
 .film-detail__about {
   margin-top: 20px;
   font-family: 'Roboto', sans-serif;
