@@ -12,6 +12,8 @@ const refs =
     btnQueue: document.querySelector('.js-button-queue-library'),
     message: document.querySelector('.js-list-library__no-movie'),
     section: document.querySelector('.js-section-library'),
+    btnLibrary: document.querySelector('.js-nav-btn-library'),
+    btnHome: document.querySelector('.js-nav-btn-home'),
 }
 
 
@@ -19,10 +21,26 @@ const refs =
 document.addEventListener("watched", () => loadWatched());
 document.addEventListener("queue", () => loadQueue());
 
+refs.btnLibrary.addEventListener("click", () => 
+{
+    refs.btnWatched.classList.add("button--orange");
+    refs.btnQueue.classList.remove("button--orange");
+    //загружаю список
+    loadWatched();
+});
+
+refs.btnHome.addEventListener("click", () => 
+{
+    refs.section.classList.remove('visually-hidden');
+    refs.message.classList.add('visually-hidden');
+});
+
 
 refs.btnWatched.addEventListener('click', () =>
 {
     document.dispatchEvent(eventSelectedWatchedTab);
+    refs.section.classList.remove('visually-hidden');
+    refs.message.classList.add('visually-hidden');
     loadWatched();
     refs.btnWatched.classList.add("button--orange");
     refs.btnQueue.classList.remove("button--orange");
@@ -31,6 +49,8 @@ refs.btnWatched.addEventListener('click', () =>
 refs.btnQueue.addEventListener('click', () =>
 {
     document.dispatchEvent(eventSelectedQueueTab);
+    refs.section.classList.remove('visually-hidden');
+    refs.message.classList.add('visually-hidden');
     loadQueue();
     refs.btnWatched.classList.remove("button--orange");
     refs.btnQueue.classList.add("button--orange");
@@ -42,8 +62,6 @@ function loadWatched()
     {
         if (user) 
         {
-            refs.section.classList.remove('visually-hidden');
-            refs.message.classList.add('visually-hidden');
             const data = await filmFirebaseStorage.getAllWatchedListByUser();
             const filmsIdArr = Object.keys(data);
             if(filmsIdArr.length === 0)
@@ -75,8 +93,6 @@ function loadQueue()
     {
         if (user) 
         {
-            refs.section.classList.remove('visually-hidden');
-            refs.message.classList.add('visually-hidden');
             const data = await filmFirebaseStorage.getAllQueueListByUser();
             const filmsIdArr = Object.keys(data);
             if(filmsIdArr.length === 0)
@@ -102,5 +118,5 @@ function loadQueue()
       });
 }
 
-//загружаю список
-loadWatched();
+refs.section.classList.remove('visually-hidden');
+refs.message.classList.add('visually-hidden');
