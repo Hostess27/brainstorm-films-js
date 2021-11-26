@@ -1,4 +1,5 @@
 import { filmLoader } from "./modal-service";
+import { videoLoader } from "./modal-service";
 import ModalFilmRenderer from "./modal-renderer";
 import { filmFirebaseStorage } from "./film-firebase-storage";
 
@@ -50,8 +51,10 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
     async function renderFilmDetails(id)
     {
       const data = await filmLoader.loadFilmById(id);
+      //Загружаю трейлер
+      const trailer = await videoLoader.loadVideoById(id);
       ModalFilmRenderer.clear();
-      ModalFilmRenderer.render(data);
+      ModalFilmRenderer.render({...data, trailer: trailer.results[0].key});
       toggleModal();
       //buttons
       addToWatched = document.querySelector('#add-to-watched');
