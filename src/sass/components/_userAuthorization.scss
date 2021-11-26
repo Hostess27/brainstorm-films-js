@@ -5,23 +5,19 @@
   right: 20px;
   cursor: pointer;
   @media screen and (max-width: 350px) {
-    top: 5px;
+    top: 15px;
     right: 15px;
   }
 }
 
 .form-registration {
   position: absolute;
-  top: 30px;
-  right: 1px;
+  top: 80px;
+  right: 15px;
 }
 
 .form__position {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 50px;
-  width: 310px;
-  z-index: 3;
+  width: 230px;
 }
 
 .form-control {
@@ -37,11 +33,17 @@
   background-clip: padding-box;
   border: 2px solid $theme-orange;
   border-radius: 0.5rem;
-  margin: 1px;
+  margin: 5px 0;
+}
+
+.button-list {
+  display: flex;
+  justify-content: space-between;
 }
 
 .signIn,
 .register {
-  max-width: 80px;
+  margin: 3px;
+  max-width: 110px;
   background-color: rgba(26, 24, 24, 0.986);
 }
