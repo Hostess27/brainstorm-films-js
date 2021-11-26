@@ -8,21 +8,16 @@
 // @import './example';
 
 @import './base/common';
-
 @import './utils/_variables';
-@import './container';
-@import './main-container';
-@import './filmCard';
-@import './spinner';
-
-@import './modal';
-@import './filmCard';
-
-@import './library';
-
+@import './base/container';
+@import './base/main-container';
+@import './components/spinner';
+@import './layout/modal';
+@import './layout/library';
 @import './components/button';
+@import './layout/filmCard';
 @import './layout/header';
-@import './footer.scss';
-@import './modalTeam.scss';
-
+@import './layout/footer';
+@import './layout/modalTeam';
+@import './components/scroll';
 @import './components/userAuthorization';
