@@ -2,7 +2,7 @@ const refs = {
     closeModalTeamBtn: document.querySelector('[data-modal-team-close]'),
     modalTeam: document.querySelector('[data-modal-team]'),
     footerLink: document.querySelector('.developed'),
-    modalTeamBackdrop: document.querySelector('.backdrop-team'),
+    modalTeamBackdrop: document.querySelector('.backdrop-team')
 };
 
     refs.closeModalTeamBtn.addEventListener('click', CloseModalTeam);
