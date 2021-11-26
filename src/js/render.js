@@ -6,6 +6,7 @@ const refs = {
 };
 
 export const renderGalleryTrendingMovie = function (objects) {
-  refs.mainContainer.innerHTML = '';
   refs.mainContainer.insertAdjacentHTML('beforeend', filmCard(objects));
 };
+
+export const clearGalleryTrendingMovi = () =>  refs.mainContainer.innerHTML = '';

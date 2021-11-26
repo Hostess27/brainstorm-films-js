@@ -2,7 +2,8 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import FetchFromTrendingMovies from './api';
 import renderClickPageMovie from './renderMoviesOnStartPage'
-import { renderGalleryTrendingMovie } from './render';
+import { renderGalleryTrendingMovie, clearGalleryTrendingMovi } from './render';
+import { filmLoader } from './library-service';
 
 const trendingMovies = new FetchFromTrendingMovies()
 
@@ -99,11 +100,34 @@ console.log('pagination.getCurrentPage()', pagination.getCurrentPage())
 
 
 pagination.on('afterMove', ({ page }) => console.log(page));
-pagination.on('afterMove', ({ page }) => {
+pagination.on('afterMove', async ({ page }) => {
   trendingMovies.clickPage = page
   pagination.getCurrentPage()
   console.log('pagination.getCurrentPage()', pagination.getCurrentPage())
-  trendingMovies.fetchTrending().then(data => { console.log(page), renderGalleryTrendingMovie(data), console.log(trendingMovies.fetchTrending()), console.log(trendingMovies.page) })
+  clearGalleryTrendingMovi();
+      const data = await trendingMovies.fetchTrending();
+      console.log("DATA", data);
+      if (!data.length) {
+        () =>
+          error({
+            title: 'Error!',
+            text: 'Loading Error',
+          });
+      }
+      const filmsIdArr = data.map(film => film.id);
+      await filmsIdArr.map(async id =>
+      {
+        const film = await filmLoader.loadFilmById(Number(id));
+        if(film.genres.length >= 3)
+        {
+          film.genres = [...film.genres.slice(0, 3), {id: "00000", name: "other..."}];
+        }
+        renderGalleryTrendingMovie(film);
+      });
+      //  console.log(page), 
+      //  renderGalleryTrendingMovie(data), 
+      //  console.log(trendingMovies.fetchTrending()),
+      //   console.log(trendingMovies.page) 
   // renderClickPageMovie(page)
   // console.log(renderClickPageMovie(page))
   console.log(page)
