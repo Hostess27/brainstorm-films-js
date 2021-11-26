@@ -2,6 +2,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { filmFirebaseStorage } from "./film-firebase-storage";
 import { filmLoader } from "./library-service";
 import libraryRenderer from "./library-renderer";
+import {addSpinner, removeSpinner} from './spinner';
 
 let eventSelectedWatchedTab = new Event('watchedTab');
 let eventSelectedQueueTab = new Event('queueTab');
@@ -64,6 +65,7 @@ refs.btnQueue.addEventListener('click', () =>
 
 function loadWatched() 
 {
+    addSpinner();
     onAuthStateChanged(getAuth(), async (user) => 
     {
         if (user) 
@@ -90,11 +92,13 @@ function loadWatched()
         {
           console.log('[LIBRARY] User is signed out...');
         }
+        removeSpinner();
       });
 }
 
 function loadQueue() 
 {
+    addSpinner();
     onAuthStateChanged(getAuth(), async (user) => 
     {
         if (user) 
@@ -121,6 +125,7 @@ function loadQueue()
         {
           console.log('[LIBRARY] User is signed out...');
         }
+        removeSpinner();
       });
 }
 
