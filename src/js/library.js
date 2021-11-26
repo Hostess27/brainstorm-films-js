@@ -12,8 +12,8 @@ const refs =
     btnQueue: document.querySelector('.js-button-queue-library'),
     message: document.querySelector('.js-list-library__no-movie'),
     section: document.querySelector('.js-section-library'),
-    btnLibrary: document.querySelector('.js-nav-btn-library'),
-    btnHome: document.querySelector('.js-nav-btn-home'),
+    btnLibrary: document.querySelectorAll('.js-nav-btn-library'),
+    btnHome: document.querySelectorAll('.js-nav-btn-home'),
 }
 
 
@@ -21,19 +21,25 @@ const refs =
 document.addEventListener("watched", () => loadWatched());
 document.addEventListener("queue", () => loadQueue());
 
-refs.btnLibrary.addEventListener("click", () => 
+for (let i = 0; i < refs.btnLibrary.length; i++) 
 {
-    refs.btnWatched.classList.add("button--orange");
-    refs.btnQueue.classList.remove("button--orange");
-    //загружаю список
-    loadWatched();
-});
+    refs.btnLibrary[i].addEventListener("click", () => 
+    {
+        refs.btnWatched.classList.add("button--orange");
+        refs.btnQueue.classList.remove("button--orange");
+        //загружаю список
+        loadWatched();
+    });
+}
 
-refs.btnHome.addEventListener("click", () => 
+for (let i = 0; i < refs.btnHome.length; i++) 
+{
+    refs.btnHome[i].addEventListener("click", () => 
 {
     refs.section.classList.remove('visually-hidden');
     refs.message.classList.add('visually-hidden');
 });
+}
 
 
 refs.btnWatched.addEventListener('click', () =>
