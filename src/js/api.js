@@ -5,18 +5,15 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 // Запрос за популярными фильмами
 
-
 export default class FetchFromTrendingMovies {
-  constructor(){
+  constructor() {
     this.page = 1;
   }
 
-
-  async  fetchTrending() {
+  async fetchTrending() {
     try {
       const { data } = await axios.get(`/trending/movie/week?api_key=${API_KEY}&page=${this.page}`);
       this.incrementPage();
-      // console.log(this);
       return data.results;
     } catch (err) {
       () =>
@@ -24,7 +21,6 @@ export default class FetchFromTrendingMovies {
           title: 'Error!',
           text: 'Loading Error',
         });
-
     }
   }
 
@@ -36,7 +32,7 @@ export default class FetchFromTrendingMovies {
     this.page = 1;
   }
 
-get clickPage() {
+  get clickPage() {
     return this.page;
   }
 
@@ -44,6 +40,3 @@ get clickPage() {
     this.page = newPage;
   }
 }
-
-
-
