@@ -17,12 +17,13 @@ const currentPage = 1;
 if (formValueFef != null) formValueFef.addEventListener('click', getFormTextContent);
 
 async function getFormTextContent(evt) {
-    addSpinner();
+   
     
     evt.preventDefault();
     const data = await searchForQuery(KEY, formValueFef.previousElementSibling.value,currentPage);
     
     if (data.results.length > 0) {
+         addSpinner();
         ulListRef.innerHTML = ``;
      //Общее кол-во найденных фильмов
              const total = data.total_results;
