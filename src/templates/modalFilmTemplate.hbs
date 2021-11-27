@@ -1,45 +1,48 @@
-<div class="film-detail__image-container">
-          <img class="film-detail__image" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{tagline}}" />
-        </div>
-        <div class="film-detail__content-container">
-          <div class="film-detail_id" data-id="{{id}}"></div>
-          <h2 class="film-detail_title">{{this.title}}</h2>
-          <div class="film-detail__statistics">
-            <div class="film-detail__filds">
-              <span class="film-detail__vote-fild">Vote / Votes</span>
-              <span class="film-detail__popularity-fild">Popularity</span>
-              <span class="film-detail__original-title-fild">Original Title</span>
-              <span class="film-detail__genre-fild">Genre</span>
-            </div>
-            <div class="film-detail__values">
-              <span class="film-detail__vote-value">
-                <span class="film-detail__values--orange">{{vote_average}}</span> /
-                <span class="film-detail__values--black">{{vote_count}}</span>
-              </span>
-              <span class="film-detail__popularity-value film-detail__values--black">{{popularity}}</span>
-              <span class="film-detail__original-title-value film-detail__values--black"
-                >{{original_title}}</span
-              >
-              <span class="film-detail__genre-value film-detail__values--black">
-                  {{#each genres}}
-                  <span class="film-detail__values--black">{{#if @last}} {{name}}{{else}} {{name}}, {{/if}}</span>
-                  {{/each}}
-              </span>
-            </div>
-          </div>
-          <div class="film-detail_trailer">
-              <iframe
-              src="https://www.youtube.com/embed/{{trailer}}" 
-              title="YouTube video player" frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-              </iframe>
-            </div>
-          <h3 class="film-detail__about">About</h3>
-          {{!-- <div class="film-detail__description-container"> --}}
-          <div class="film-detail__description">{{overview}}</div>
-          {{!-- </div> --}}
-          <div class="film-details__buttons">
-            <button class="film-details__buttons-add-to-watched" id="add-to-watched">add to Watched</button>
-            <button class="film-details__buttons-add-to-queue" id="add-to-queue">add to queue</button>
-          </div>
-        </div>
+<div class='film-detail__image-container'>
+  <img
+    class='film-detail__image'
+    src='https://image.tmdb.org/t/p/original{{poster_path}}'
+    alt='{{tagline}}'
+  />
+</div>
+<div class='film-detail__content-container'>
+  <div class='film-detail_id' data-id='{{id}}'></div>
+  <h2 class='film-detail_title'>{{this.title}}</h2>
+  <div class='film-detail__statistics'>
+    <div class='film-detail__filds'>
+      <span class='film-detail__vote-fild'>Vote / Votes</span>
+      <span class='film-detail__popularity-fild'>Popularity</span>
+      <span class='film-detail__original-title-fild'>Original Title</span>
+      <span class='film-detail__genre-fild'>Genre</span>
+    </div>
+    <div class='film-detail__values'>
+      <span class='film-detail__vote-value'>
+        <span class='film-detail__values--orange'>{{vote_average}}</span>
+        /
+        <span class='film-detail__values--black'>{{vote_count}}</span>
+      </span>
+      <span class='film-detail__popularity-value film-detail__values--black'>{{popularity}}</span>
+      <span
+        class='film-detail__original-title-value film-detail__values--black'
+      >{{original_title}}</span>
+      <span class='film-detail__genre-value film-detail__values--black'>
+        {{#each genres}}
+          <span class='film-detail__values--black'>{{#if @last}} {{name}}{{else}}
+              {{name}},
+            {{/if}}</span>
+        {{/each}}
+      </span>
+    </div>
+  </div>
+  <div class='film-detail_trailer'>
+    <div id="player"></div>
+  </div>
+  <h3 class='film-detail__about'>About</h3>
+  {{! <div class="film-detail__description-container"> }}
+  <div class='film-detail__description'>{{overview}}</div>
+  {{! </div> }}
+  <div class='film-details__buttons'>
+    <button class='film-details__buttons-add-to-watched' id='add-to-watched'>add to Watched</button>
+    <button class='film-details__buttons-add-to-queue' id='add-to-queue'>add to queue</button>
+  </div>
+</div>

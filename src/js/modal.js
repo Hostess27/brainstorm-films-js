@@ -2,6 +2,7 @@ import { filmLoader } from "./modal-service";
 import { videoLoader } from "./modal-service";
 import ModalFilmRenderer from "./modal-renderer";
 import { filmFirebaseStorage } from "./film-firebase-storage";
+import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
 
 (() => 
 {
@@ -36,7 +37,13 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
       tabQueue = true;
     });
 
-    refs.closeModalBtn.addEventListener('click', toggleModal);
+    refs.closeModalBtn.addEventListener('click', () =>
+    {
+      stopVideo();
+      toggleModal();
+    });
+
+
     for (let i = 0; i < refs.gallery.length; i++) 
     {
       refs.gallery[i].addEventListener('click', onFilmSelected);
@@ -54,13 +61,14 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
       //Загружаю трейлер
       const trailer = await videoLoader.loadVideoById(id);
       ModalFilmRenderer.clear();
-      ModalFilmRenderer.render({...data, trailer: trailer.results[0].key});
+      ModalFilmRenderer.render(data);
+      //Создаю плеер
+      onYouTubeIframeAPIReady(trailer.results[0].key);
       toggleModal();
       //buttons
       addToWatched = document.querySelector('#add-to-watched');
       addToQueue = document.querySelector('#add-to-queue');
       filmId = document.querySelector('.film-detail_id').dataset.id;
-    
 
       addToWatched.addEventListener('click', async () =>
       {
@@ -98,12 +106,17 @@ import { filmFirebaseStorage } from "./film-firebase-storage";
     {
       const element = evt.target.closest('.modal');
       if(element) return;
-       toggleModal();
+      stopVideo();
+      toggleModal();
     });
 
-    //Слушатель Закрытие подалки по Esc
+    //Слушатель Закрытие модалки по Esc
     window.addEventListener('keydown', evt =>
     {
-        if(evt.code === "Escape" && document.body.classList.contains('modal-open')) toggleModal();
+        if(evt.code === "Escape" && document.body.classList.contains('modal-open')) 
+        {
+          stopVideo();
+          toggleModal();
+        }
     });
   })();
