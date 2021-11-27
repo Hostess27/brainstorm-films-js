@@ -9,9 +9,10 @@ const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
 
 //formValueFef-форма
 //ulListRef-список фильмов главной страницы
+//currentPage-страница, с которой рендерим данные. По умолчанию 1
 const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
- 
+const currentPage = 1;
 //Считываю текст в инпуте 
 if (formValueFef != null) formValueFef.addEventListener('click', getFormTextContent);
 
@@ -19,7 +20,7 @@ async function getFormTextContent(evt) {
     addSpinner();
     
     evt.preventDefault();
-    const data = await searchForQuery(KEY, formValueFef.previousElementSibling.value, "1");
+    const data = await searchForQuery(KEY, formValueFef.previousElementSibling.value,currentPage);
     
     if (data.results.length > 0) {
         ulListRef.innerHTML = ``;
@@ -28,7 +29,6 @@ async function getFormTextContent(evt) {
              const results = data.results;
     //Общее кол-во найденных страниц
              const pages = data.total_pages;
-        
             // success({
             // title: 'Success!',
             // text: `Success! There are ${total} films in ${pages} page(s)`,
