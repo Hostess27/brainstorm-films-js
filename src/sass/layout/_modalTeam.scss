@@ -170,7 +170,7 @@ body.modal-team-open {
   height: auto;
   border-radius: 5px;
   width: 120px;
-  height: 180px;
+  height: 120px;
 
   @media screen and (min-width: 768px) {
     width: 134.5px;
@@ -181,6 +181,10 @@ body.modal-team-open {
     width: 190.5px;
     height: 285.75px;
   }
+}
+
+.qr {
+  padding: 30px 0;
 }
 
 .modal-team__datails {
