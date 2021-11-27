@@ -12,18 +12,19 @@ const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
 //currentPage-страница, с которой рендерим данные. По умолчанию 1
 const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
+const searchFormInput = document.querySelector('.search-form__input');
 const currentPage = 1;
 //Считываю текст в инпуте 
 formValueFef.addEventListener('click', getFormTextContent);
-//  if (formValueFef.previousElementSibling.value != "") return;
+//  if (searchFormInput.value != "") return;
 
 async function getFormTextContent(evt) {
     evt.preventDefault();
 
-    if (formValueFef.previousElementSibling.value != "") {
+    if (searchFormInput.value != "") {
         addSpinner();
     
-        const data = await searchForQuery(KEY, formValueFef.previousElementSibling.value, currentPage);
+        const data = await searchForQuery(KEY, searchFormInput.value, currentPage);
     
         if (data.results.length > 0) {
             ulListRef.innerHTML = ``;
@@ -46,13 +47,13 @@ async function getFormTextContent(evt) {
                 }
 
                 ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
-                formValueFef.previousElementSibling.value = "";
+                searchFormInput.value = "";
                 removeSpinner();
             });
                            
         } else {
             ulListRef.innerHTML = ``;
-            formValueFef.previousElementSibling.value = "";
+            searchFormInput.value = "";
             ulListRef.insertAdjacentHTML('afterbegin', `<img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
             error({
                 title: 'OOPS!',
