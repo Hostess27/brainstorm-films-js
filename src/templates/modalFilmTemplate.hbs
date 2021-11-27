@@ -35,20 +35,7 @@
     </div>
   </div>
   <div class='film-detail_trailer'>
-    <iframe
-      id='#trailer'
-      src='https://www.youtube.com/embed/{{trailer}}?enablejsapi=1'
-      title='YouTube video player'
-      frameborder='0'
-      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-      allowfullscreen
-    >
-    </iframe>
-    <script>
-      function myFunction() { var x = document.querySelector(".js-film-trailer"); var y =
-      (x.contentWindow || x.contentDocument); if (y.document)y = y.document;
-      y.body.style.backgroundColor = "red"; console.log('Y = ', y); }
-    </script>
+    <div id="player"></div>
   </div>
   <h3 class='film-detail__about'>About</h3>
   {{! <div class="film-detail__description-container"> }}
