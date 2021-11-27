@@ -1,5 +1,5 @@
 import searchForQuery from './responseForQuery';
-import templateQuery from '../templates/filmCard.hbs';
+import templateQuery from '../templates/filmCardcopy.hbs';
 import { success, error } from './notify.js';
 import {addSpinner, removeSpinner} from './spinner';
 
@@ -16,6 +16,7 @@ if (formValueFef != null) formValueFef.addEventListener('click', getFormTextCont
 
 function getFormTextContent(evt) {
     evt.preventDefault();
+    
     if (formValueFef.previousElementSibling.value != "") {
         ulListRef.innerHTML = ``;
         addSpinner();
@@ -26,12 +27,13 @@ function getFormTextContent(evt) {
                 const results = data.results;
                 //Общее кол-во найденных страниц
                 const pages = data.total_pages;
+                
                 if (results.length > 0) {
                 // success({
                 // title: 'Success!',
                 // text: `Success! There are ${total} films in ${pages} page(s)`,
                 // })
-                    ulListRef.insertAdjacentHTML('afterbegin', templateQuery(results));
+                    ulListRef.insertAdjacentHTML('afterbegin', templateQuery(data.results));
                     formValueFef.previousElementSibling.value = "";
                 } else {
                     formValueFef.previousElementSibling.value = "";

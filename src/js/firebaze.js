@@ -127,7 +127,7 @@ function getValuesRegister(evt) {
 };
 
 window.addEventListener('click', () => {
-    if (window.event.pageY >= 230 || window.event.pageX <= window.event.view.screen.availWidth-264) userRef.nextElementSibling.classList.add('visually-hidden');
+    if (window.event.pageY >= 230 || window.event.pageX <= window.event.view.outerWidth-244) userRef.nextElementSibling.classList.add('visually-hidden');
 });
 
 window.addEventListener('keydown', (e) => {
