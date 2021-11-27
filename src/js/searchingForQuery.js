@@ -14,50 +14,52 @@ const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
 const currentPage = 1;
 //Считываю текст в инпуте 
-if (formValueFef != null) formValueFef.addEventListener('click', getFormTextContent);
+formValueFef.addEventListener('click', getFormTextContent);
+//  if (formValueFef.previousElementSibling.value != "") return;
 
 async function getFormTextContent(evt) {
-   
-    
     evt.preventDefault();
-    const data = await searchForQuery(KEY, formValueFef.previousElementSibling.value,currentPage);
+
+    if (formValueFef.previousElementSibling.value != "") {
+        addSpinner();
     
-    if (data.results.length > 0) {
-         addSpinner();
-        ulListRef.innerHTML = ``;
-     //Общее кол-во найденных фильмов
-             const total = data.total_results;
-             const results = data.results;
-    //Общее кол-во найденных страниц
-             const pages = data.total_pages;
+        const data = await searchForQuery(KEY, formValueFef.previousElementSibling.value, currentPage);
+    
+        if (data.results.length > 0) {
+            ulListRef.innerHTML = ``;
+            //Общее кол-во найденных фильмов
+            const total = data.total_results;
+            const results = data.results;
+            //Общее кол-во найденных страниц
+            const pages = data.total_pages;
             // success({
             // title: 'Success!',
             // text: `Success! There are ${total} films in ${pages} page(s)`,
             // })
         
-    //Получаю айдишники фильмов
-    const filmsIdArr = data.results.map(film => film.id);
-    await filmsIdArr.map(async id => {
-        const film = await filmLoader.loadFilmById(Number(id));
-        if (film.genres.length >= 3) {
-        film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
-        }
+            //Получаю айдишники фильмов
+            const filmsIdArr = data.results.map(film => film.id);
+            await filmsIdArr.map(async id => {
+                const film = await filmLoader.loadFilmById(Number(id));
+                if (film.genres.length >= 3) {
+                    film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
+                }
 
-    
-        ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
-        formValueFef.previousElementSibling.value = "";
-        removeSpinner();
-  });
+                ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
+                formValueFef.previousElementSibling.value = "";
+                removeSpinner();
+            });
                            
-    } else {
+        } else {
             ulListRef.innerHTML = ``;
             formValueFef.previousElementSibling.value = "";
             ulListRef.insertAdjacentHTML('afterbegin', `<img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
-        error({
-            title: 'OOPS!',
-            text: 'Nothing found!',
-        });
-        removeSpinner();
+            error({
+                title: 'OOPS!',
+                text: 'Nothing found!',
+            });
+            removeSpinner();
+        }
     }
 }
   
