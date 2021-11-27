@@ -27,6 +27,7 @@ async function renderMovieOnStartPage() {
     if (film.genres.length >= 3) {
       film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
     }
+    // console.log(film)
     renderGalleryTrendingMovie(film);
     removeSpinner();
   });

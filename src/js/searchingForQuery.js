@@ -27,6 +27,10 @@ function getFormTextContent(evt) {
                 const results = data.results;
                 //Общее кол-во найденных страниц
                 const pages = data.total_pages;
+                localStorage.setItem('currentQuery', formValueFef.previousElementSibling.value);
+  const watchLocalstorageInputQuery = localStorage.getItem('currentQuery')
+  console.log("watchLocalstorageInputQuery", watchLocalstorageInputQuery)
+                
                 
                 if (results.length > 0) {
                     // success({
