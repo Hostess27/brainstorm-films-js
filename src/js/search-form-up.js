@@ -1,7 +1,7 @@
-document.querySelector('.search-form__label').addEventListener('click', function (e) {
-  upItem(e);
-});
+// document.querySelector('.search-form__label').addEventListener('click', function (e) {
+//   upItem(e);
+// });
 
-function upItem(e) {
-  e.target.style.transform = 'translateY(-120%)';
-}
+// function upItem(e) {
+//   e.target.style.transform = 'translateY(-120%)';
+// }
