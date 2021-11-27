@@ -1,5 +1,5 @@
 import searchForQuery from './responseForQuery';
-import templateQuery from '../templates/filmCard.hbs';
+import templateQuery from '../templates/filmCardcopy.hbs';
 import { success, error } from './notify.js';
 import {addSpinner, removeSpinner} from './spinner';
 
@@ -16,6 +16,7 @@ if (formValueFef != null) formValueFef.addEventListener('click', getFormTextCont
 
 function getFormTextContent(evt) {
     evt.preventDefault();
+    
     if (formValueFef.previousElementSibling.value != "") {
         ulListRef.innerHTML = ``;
         addSpinner();
@@ -26,22 +27,24 @@ function getFormTextContent(evt) {
                 const results = data.results;
                 //Общее кол-во найденных страниц
                 const pages = data.total_pages;
+                
                 if (results.length > 0) {
-                // success({
-                // title: 'Success!',
-                // text: `Success! There are ${total} films in ${pages} page(s)`,
-                // })
-                    ulListRef.insertAdjacentHTML('afterbegin', templateQuery(results));
+                    // success({
+                    // title: 'Success!',
+                    // text: `Success! There are ${total} films in ${pages} page(s)`,
+                    // })
+                    ulListRef.insertAdjacentHTML('afterbegin', templateQuery(data.results));
                     formValueFef.previousElementSibling.value = "";
                 } else {
                     formValueFef.previousElementSibling.value = "";
                     ulListRef.insertAdjacentHTML('afterbegin', `<img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
                     error({
-                    title: 'OOPS!',
-                    text: 'Nothing found!',
+                        title: 'OOPS!',
+                        text: 'Nothing found!',
                     })
                 }
                 removeSpinner();
             });
     }
+    
 }
