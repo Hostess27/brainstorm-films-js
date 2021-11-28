@@ -1,9 +1,7 @@
 <div class='film-detail__image-container'>
-  <img
-    class='film-detail__image'
-    src='https://image.tmdb.org/t/p/original{{poster_path}}'
-    alt='{{tagline}}'
-  />
+  {{#if poster_path}}
+    <img class='film-detail__image' src="https://image.tmdb.org/t/p/w500{{poster_path}}" {{#if original_title}} alt="{{original_title}}"{{else}} alt="No descriptions"{{/if}}>
+  {{else}}<img src="https://via.placeholder.com/294x441/808080/545454&text=NO POSTER :(" alt="No poster">{{/if}}
 </div>
 <div class='film-detail__content-container'>
   <div class='film-detail_id' data-id='{{id}}'></div>
