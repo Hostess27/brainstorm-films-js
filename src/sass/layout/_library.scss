@@ -9,7 +9,9 @@
   flex-wrap: wrap;
 }
 
-.library__no-movie-container {
+.library__no-movie-container .visually-hidden {
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 }
