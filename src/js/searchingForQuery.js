@@ -14,7 +14,7 @@ const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
 const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
 const searchFormInput = document.querySelector('.search-form__input');
-
+const container = document.getElementById('tui-pagination-container');
 const currentPage = 1;
 
 //Считываю текст в инпуте 
@@ -50,6 +50,7 @@ async function getFormTextContent(evt) {
                     film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
                 }
 
+                
                 ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
                 searchFormInput.value = "";
                 removeSpinner();
@@ -58,7 +59,9 @@ async function getFormTextContent(evt) {
         } else {
             ulListRef.innerHTML = ``;
             searchFormInput.value = "";
-            ulListRef.insertAdjacentHTML('afterbegin', `<p class="image-list-empty library-text neon xz">ничего не найдено...</p> <img src ="/theatre1.1adc50f8.png" class="search-image_position"/>`);
+            container.remove()
+            
+            ulListRef.insertAdjacentHTML('afterbegin', `<p class="image-list-empty library-text neon xz">ничего не найдено...</p> <img src ="./images/theatre1.png" class="search-image_position"/>`);
             error({
                 title: 'OOPS!',
                 text: 'Nothing found!',
