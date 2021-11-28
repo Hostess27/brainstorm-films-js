@@ -10,13 +10,3 @@ export const filmLoader =
         return data;
     }
 }
-
-export const videoLoader =
-{
-    async loadVideoById(id)
-    {
-        const response = await fetch(`${BASE_URL}${id}/videos?api_key=${API_KEY}`);
-        const data = await response.json();
-        return data;
-    }
-}

@@ -1,14 +1,20 @@
 import { filmLoader } from "./modal-service";
+import { videoLoader } from "./modal-service";
 import ModalFilmRenderer from "./modal-renderer";
-import filmFirebaseStorage from "./film-firebase-storage";
+import { filmFirebaseStorage } from "./film-firebase-storage";
+import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
 
 (() => 
 {
+  //События о изменениях в списках
+  let eventWatchedChanged = new Event("watched");
+  let eventQueueChanged = new Event("queue");
+
     const refs = 
     {
       closeModalBtn: document.querySelector('[data-modal-close]'),
       modal: document.querySelector('[data-modal]'),
-      gallery: document.querySelector('.js-main-container'),
+      gallery: document.querySelectorAll('.js-main-container'),
       backdrop: document.querySelector('.backdrop'),
     };
 
@@ -16,10 +22,32 @@ import filmFirebaseStorage from "./film-firebase-storage";
     let addToQueue;
     let filmId;
 
-    // updateBtnWatched();
-  
-    refs.closeModalBtn.addEventListener('click', toggleModal);
-    refs.gallery.addEventListener('click', onFilmSelected);
+    let tabWatched = true;
+    let tabQueue = false;
+
+    //Подписываемся на события Переключения между списками в Library
+    document.addEventListener("watchedTab", () => 
+    {
+      tabWatched = true;
+      tabQueue = false;
+    });
+    document.addEventListener("queueTab", () =>  
+    {
+      tabWatched = false;
+      tabQueue = true;
+    });
+
+    refs.closeModalBtn.addEventListener('click', () =>
+    {
+      stopVideo();
+      toggleModal();
+    });
+
+
+    for (let i = 0; i < refs.gallery.length; i++) 
+    {
+      refs.gallery[i].addEventListener('click', onFilmSelected);
+    }
   
     function toggleModal() 
     {
@@ -30,23 +58,34 @@ import filmFirebaseStorage from "./film-firebase-storage";
     async function renderFilmDetails(id)
     {
       const data = await filmLoader.loadFilmById(id);
+      //Загружаю трейлер
+      const trailer = await videoLoader.loadVideoById(id);
       ModalFilmRenderer.clear();
       ModalFilmRenderer.render(data);
+      //Создаю плеер
+      onYouTubeIframeAPIReady(trailer.results[0].key);
       toggleModal();
       //buttons
       addToWatched = document.querySelector('#add-to-watched');
       addToQueue = document.querySelector('#add-to-queue');
       filmId = document.querySelector('.film-detail_id').dataset.id;
-    
 
       addToWatched.addEventListener('click', async () =>
       {
         await filmFirebaseStorage.addToWatched(filmId, addToWatched);
+        if(tabWatched) 
+        {
+          document.dispatchEvent(eventWatchedChanged);
+        }
       });
 
       addToQueue.addEventListener('click', async () =>
       {
         await filmFirebaseStorage.addToQueue(filmId, addToQueue);
+        if(tabQueue) 
+        {
+          document.dispatchEvent(eventQueueChanged);
+        }
       });
 
       await filmFirebaseStorage.findFilmWatchedById(filmId, addToWatched);
@@ -59,8 +98,6 @@ import filmFirebaseStorage from "./film-firebase-storage";
       const element = evt.target.closest('.gallery__item');
       if(element && element.dataset.id != undefined)
       {
-        console.log("ID = ", element.dataset.id);
-        console.log(await filmLoader.loadFilmById(element.dataset.id));
         renderFilmDetails(element.dataset.id);
       }
     }
@@ -69,12 +106,17 @@ import filmFirebaseStorage from "./film-firebase-storage";
     {
       const element = evt.target.closest('.modal');
       if(element) return;
-       toggleModal();
+      stopVideo();
+      toggleModal();
     });
 
-    //Слушатель Закрытие подалки по Esc
+    //Слушатель Закрытие модалки по Esc
     window.addEventListener('keydown', evt =>
     {
-        if(evt.code === "Escape" && document.body.classList.contains('modal-open')) toggleModal();
+        if(evt.code === "Escape" && document.body.classList.contains('modal-open')) 
+        {
+          stopVideo();
+          toggleModal();
+        }
     });
   })();

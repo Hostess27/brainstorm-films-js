@@ -3,6 +3,7 @@ const refs = {
     modalTeam: document.querySelector('[data-modal-team]'),
     footerLink: document.querySelector('.developed'),
     modalTeamBackdrop: document.querySelector('.backdrop-team'),
+    modalTeamFlip: document.querySelectorAll('.flipper')
 };
 
     refs.closeModalTeamBtn.addEventListener('click', CloseModalTeam);
@@ -11,6 +12,7 @@ const refs = {
 function CloseModalTeam() {
     document.body.classList.remove('modal-team-open');
     refs.modalTeam.classList.add('backdrop--is-hidden');
+    defaultImgFlip();
 };
 
 function OpenModalTeam() {
@@ -27,3 +29,19 @@ refs.modalTeamBackdrop.addEventListener('click', evt => {
 window.addEventListener('keydown', evt => {
     if(evt.code === "Escape" && document.body.classList.contains('modal-team-open')) CloseModalTeam();
 });
+
+// Функція для повороту фото члена команди на qrcode і назад
+(() => {
+    refs.modalTeamFlip.forEach(element => {
+        element.addEventListener('click', evt => {
+            evt.currentTarget.style.transform != 'rotateY(180deg)' ? evt.currentTarget.style.transform = 'rotateY(180deg)' : evt.currentTarget.style.removeProperty('transform');
+        });
+    });
+})();
+
+// Повернення в початкове положення зображень членів команди
+function defaultImgFlip() {
+    refs.modalTeamFlip.forEach(element => {
+        element.style.removeProperty('transform');
+    });
+};

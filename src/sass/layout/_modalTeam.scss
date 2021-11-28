@@ -47,6 +47,7 @@
   .modal-team {
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
+    transition: transform 250ms $transition-cubic, opacity 250ms $transition-cubic;
   }
 }
 
@@ -89,6 +90,8 @@
   &:hover,
   &:focus {
     fill: $theme-orange;
+    transform: rotate(90deg);
+    transition: 0.6s;
   }
 }
 
@@ -149,7 +152,8 @@ body.modal-team-open {
   -webkit-box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
   -moz-box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
   box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.05);
+  transition: box-shadow 250ms $transition-cubic, transform 250ms $transition-cubic;
 }
 
 .modal-team__wrapper {
@@ -160,11 +164,27 @@ body.modal-team-open {
   border-radius: 5px;
 }
 
-.modal-team__wrapper img {
+.userImg {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 5px;
+  width: 120px;
+  height: 120px;
+
+  @media screen and (min-width: 768px) {
+    width: 134.5px;
+    height: 201.75px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 190.5px;
+    height: 285.75px;
+  }
+}
+
+.qr {
+  padding: 30px 0;
 }
 
 .modal-team__datails {
@@ -188,6 +208,7 @@ body.modal-team-open {
 }
 
 .modal-team__name {
+  color: $black;
   display: flex;
   align-items: center;
   font-family: Roboto, sans-serif;
@@ -243,4 +264,61 @@ body.modal-team-open {
 
 .modal-team__bio {
   display: flex;
+}
+
+// Fliper
+
+/* весь контейнер поддерживает перспективу */
+.flip-container {
+  perspective: 1000;
+}
+/* переверните сторону при проведении мышью */
+// .flip-container:focus .flipper,
+// .flip-container.focus .flipper {
+//   transform: rotateY(180deg);
+// }
+
+.flip-container,
+.front,
+.back {
+  width: 120px;
+  height: 180px;
+
+  @media screen and (min-width: 768px) {
+    width: 134.5px;
+    height: 201.75px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 190.5px;
+    height: 285.75px;
+  }
+}
+
+/* здесь находится скорость перевертывания */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* скройте обратную сторону во время переворота */
+.front,
+.back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* лицевая сторона размещена над обратной */
+.front {
+  z-index: 2;
+}
+
+/* обратная, изначально скрытая сторона */
+.back {
+  transform: rotateY(180deg);
 }

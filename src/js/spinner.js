@@ -3,12 +3,12 @@ const refs = {
     spinnerWraper: document.querySelector('.spin-wrapper'),
 };
 
-function addSpinner() {
+export const addSpinner = function () {
   refs.spinner.classList.remove('visually-hidden');
   refs.spinnerWraper.classList.remove('visually-hidden');
 };
 
-function removeSpinner() {
+export const removeSpinner = function () {
   refs.spinner.classList.add('visually-hidden');
   refs.spinnerWraper.classList.add('visually-hidden');
 };
