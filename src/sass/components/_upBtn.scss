@@ -1,6 +1,7 @@
 .up-btn-container {
   cursor: pointer;
   position: fixed;
+  z-index: 10;
   right: 3%;
   bottom: 5%;
   :hover,
