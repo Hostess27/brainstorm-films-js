@@ -58,7 +58,7 @@ async function getFormTextContent(evt) {
         } else {
             ulListRef.innerHTML = ``;
             searchFormInput.value = "";
-            ulListRef.insertAdjacentHTML('afterbegin', `<p class="image-list-empty library-text neon xz">ничего не найдено...</p> <img src ="/theatre1.1adc50f8.png" class="search-image_position"/>`);
+            ulListRef.insertAdjacentHTML('afterbegin', `<p class="image-list-empty library-text neon xz">ничего не найдено...</p> <img src ="./images/theatre1.png" class="search-image_position"/>`);
             error({
                 title: 'OOPS!',
                 text: 'Nothing found!',
