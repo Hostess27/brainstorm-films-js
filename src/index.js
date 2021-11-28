@@ -10,7 +10,7 @@ import './js/heard';
 
 // window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
 
-// import './js/search-form-up.js';
+
 import './js/refresh-page-on-click-filmoteka.js';
 import './js/pagination.js';
 import './js/scroll.js';
