@@ -16,11 +16,14 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
       modal: document.querySelector('[data-modal]'),
       gallery: document.querySelectorAll('.js-main-container'),
       backdrop: document.querySelector('.backdrop'),
+      // description: document.querySelector('.film-detail__description-container'),
     };
 
     let addToWatched;
     let addToQueue;
     let filmId;
+
+    let isTrailerLoaded = false;
 
     let tabWatched = true;
     let tabQueue = false;
@@ -39,7 +42,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
 
     refs.closeModalBtn.addEventListener('click', () =>
     {
-      stopVideo();
+      if(isTrailerLoaded) stopVideo();
       toggleModal();
     });
 
@@ -63,7 +66,16 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
       ModalFilmRenderer.clear();
       ModalFilmRenderer.render(data);
       //Создаю плеер
-      onYouTubeIframeAPIReady(trailer.results[0].key);
+      if(trailer.results.length !== 0) 
+      {
+        isTrailerLoaded = true;
+        onYouTubeIframeAPIReady(trailer.results[0].key);
+      }
+      else
+      {
+        isTrailerLoaded = false;
+        document.querySelector('.film-detail__description-container').classList.add('no-trailer');
+      }
       toggleModal();
       //buttons
       addToWatched = document.querySelector('#add-to-watched');
@@ -106,7 +118,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
     {
       const element = evt.target.closest('.modal');
       if(element) return;
-      stopVideo();
+      if(isTrailerLoaded) stopVideo();
       toggleModal();
     });
 
@@ -115,7 +127,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
     {
         if(evt.code === "Escape" && document.body.classList.contains('modal-open')) 
         {
-          stopVideo();
+          if(isTrailerLoaded) stopVideo();
           toggleModal();
         }
     });
