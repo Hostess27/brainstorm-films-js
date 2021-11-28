@@ -28,7 +28,7 @@ async function getFormTextContent(evt) {
         addSpinner();
     
         const data = await searchForQuery(KEY, searchFormInput.value, currentPage);
-    
+        
         if (data.results.length > 0) {
             ulListRef.innerHTML = ``;
             
