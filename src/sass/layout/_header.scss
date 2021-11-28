@@ -167,7 +167,7 @@
     position: absolute;
     top: 0;
     left: 0;
-
+    width: 100%;
     background-color: transparent;
     border: none;
     outline: none;
@@ -188,7 +188,6 @@
 
 .search-form__label,
 .search-form__input {
-  // display: block;
   color: $white;
   font-size: 14px;
   line-height: 1.142;
