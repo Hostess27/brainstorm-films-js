@@ -28,6 +28,7 @@
   "dependencies": {
     "@pnotify/core": "^5.2.0",
     "@pnotify/mobile": "^5.2.0",
+    "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.0",
     "axios": "^0.24.0",
     "chokidar": "^3.5.2",

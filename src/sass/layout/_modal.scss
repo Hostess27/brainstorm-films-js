@@ -1,3 +1,12 @@
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -5,6 +14,7 @@ span {
   margin: 0;
   padding: 0;
 }
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -18,14 +28,14 @@ span {
   transition: opacity 250ms $transition-cubic, visibility 250ms $transition-cubic;
 
   .modal {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-
-    height: 100%;
-    width: 100%;
-    // max-height: 958px;
     max-width: 280px;
+    max-height: 958px;
+
+    width: 100%;
+    height: 90%;
 
     padding: 48px 20px 41px;
     background-color: $modal-background;
@@ -38,30 +48,40 @@ span {
     border-radius: 4px;
 
     @media screen and (max-width: 768px - 1px) {
-      overflow: auto;
+      overflow: hidden;
     }
 
     @media screen and (min-width: 768px) and (max-width: 1024px) {
-      // max-height: 562px;
-      overflow: auto;
       height: 100%;
-      width: 100%;
-      max-height: 635px;
+      max-height: 585px;
       max-width: 618px;
       padding: 42px 30px 40px 28px;
     }
 
     @media screen and (min-width: 1024px) {
-      // max-height: 568px;
       overflow: auto;
       height: 100%;
       width: 100%;
-      max-height: 750px;
+      max-height: 710px;
       max-width: 882px;
       padding: 50px 30px 40px;
     }
   }
 }
+
+.film-detail_container {
+  position: relative;
+  top: 48;
+  left: 20;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+// .film-detail__content-container {
+//   width: 100%;
+// }
 
 .film-detail {
   @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -180,11 +200,17 @@ span {
 
   .film-detail__genre-value {
     height: 16px;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    // white-space: nowrap;
   }
 
-  // .film-detail__original-title-value {
-  //   height: 16px;
-  // }
+  .film-detail__original-title-value {
+    height: 16px;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    // white-space: nowrap;
+  }
 
   .film-detail__values {
     display: flex;
@@ -244,14 +270,16 @@ iframe {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: auto;
 
   @media screen and (min-width: 768px) {
-    max-height: 130px;
+    height: auto;
+    max-height: 70px;
   }
 
   @media screen and (min-width: 1024px) {
     height: auto;
-    max-height: 140px;
+    max-height: 100px;
   }
   // overflow: hidden;
 }
@@ -353,4 +381,67 @@ iframe {
 //Utils
 body.modal-open {
   overflow: hidden;
+}
+
+/*Switch theme*/
+
+body.light-theme {
+  background-color: #fff;
+  color: #333333;
+}
+
+body.dark-theme {
+  .modal {
+    background-color: #333333;
+    color: #fff;
+
+    .modal__btn-close {
+      background-color: #333333;
+      fill: #fff;
+    }
+
+    .film-detail_title {
+      color: #fff;
+    }
+
+    .film-detail__values--black {
+      color: #fff;
+    }
+
+    .film-detail__about {
+      color: #fff;
+    }
+
+    .film-detail__description {
+      color: #fff;
+    }
+
+    .film-details__buttons-add-to-watched,
+    .film-details__buttons-add-to-queue {
+      background-color: #8c8c8c;
+      color: #fff;
+      border-color: #fff;
+    }
+
+    .film-details__buttons-add-to-watched:hover,
+    .film-details__buttons-add-to-watched:focus {
+      background-color: #ff6b01;
+      border-color: #ff6b01;
+      color: #ffffff;
+    }
+
+    .film-details__buttons-add-to-queue:hover,
+    .film-details__buttons-add-to-queue:focus {
+      background-color: #ff6b01;
+      border-color: #ff6b01;
+      color: #ffffff;
+    }
+
+    .modal__btn-close {
+      &:hover,
+      &:focus {
+        fill: #ff6b01;
+      }
+    }
+  }
 }
