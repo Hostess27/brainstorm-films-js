@@ -1,4 +1,4 @@
-import filmCardTpl from '../templates/librariFilmCard.hbs';
+import filmCardTpl from '../templates/filmCard.hbs';
 
 class LibraryRenderer
 {
