@@ -1,6 +1,5 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import FetchFromTrendingMovies from './api';
@@ -27,13 +26,13 @@ formValueFef.addEventListener('click', getImputContent);
 function getImputContent() {
   clickOnSearchButton = true;
   inputQuery = searchFormInput.value;
-  
   pagination(options.page, options.visiblePages)
  }
 
 
 // настройки блока пагинации
 const options = { 
+
     //  totalItems: 20000,  
      itemsPerPage: 20,
     //  visiblePages: 3,
@@ -61,7 +60,6 @@ const options = {
 };
 
 
-
 if ((clickOnSearchButton == false) && (inputQuery == "")) {
   options.totalItems = 20000
   const countOfPages = options.totalItems / options.itemsPerPage
@@ -69,10 +67,9 @@ if ((clickOnSearchButton == false) && (inputQuery == "")) {
   if (countOfPages <= 5) {
        options.visiblePages= countOfPages
   } else { options.visiblePages = 5 }
-
   pagination(options.page, options.visiblePages)
-
 }
+
 if ((clickOnSearchButton == true) && (inputQuery != "")) {
   responseForQuery(KEY, searchFormInput.value)
   .then((data) => {
@@ -93,6 +90,7 @@ function pagination(page){
   pagination.reset()
   pagination.getCurrentPage();
 
+  
   pagination.on('afterMove', ({ page }) => {
       
   trendingMovies.clickPage = page
@@ -126,8 +124,7 @@ function pagination(page){
  
   });
 
+
 document.addEventListener('unload', localStorage.setItem('currentQuery', ""))
-
-
 
 }

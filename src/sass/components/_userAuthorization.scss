@@ -51,15 +51,15 @@
 
 .search-image_position {
   @media screen and (max-width: 280px) {
-    max-width: 250px;
+    max-width: 50px;
   }
   @media screen and (min-width: 280px) {
-    width: 280px;
+    width: 80px;
   }
   @media screen and (min-width: 768px) {
-    width: 400px;
+    width: 100px;
   }
   @media screen and (min-width: 1024px) {
-    width: 600px;
+    width: 150px;
   }
 }

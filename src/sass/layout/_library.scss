@@ -14,36 +14,35 @@
   padding: 0;
 }
 
-
-
 .is-hidden {
   display: none;
 }
 
 .library-text {
-font-family: 'Roboto';
-color: #ff6b08;
-font-size: 28px;
-font-weight: 500;
-line-height: 1.2;
-letter-spacing: 0.03em;
-text-align: center;
-text-transform: uppercase;
- text-shadow: 0 0 0 #ff6b08;
- color: transparent;
- animation: shadows 4s infinite ease-in;
- }
+  font-family: 'Roboto';
+  color: #ff6b08;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  //  cursor: pointer;
+  text-shadow: 0 0 0 #ff6b08;
+  color: transparent;
+  animation: shadows 4s infinite ease-in;
+}
 
- @keyframes shadows {
-   60% {
-     text-shadow: 0 0 0 #ff6b08;
-   }
+@keyframes shadows {
+  60% {
+    text-shadow: 0 0 0 #ff6b08;
+  }
 
-   90% {
-     text-shadow: 0 30px 40px transparent;
-   }
+  90% {
+    text-shadow: 0 30px 40px transparent;
+  }
 
-   100% {
-     text-shadow: 0 0 0 transparent;
-   }
- }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+}
