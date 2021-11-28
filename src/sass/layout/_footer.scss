@@ -7,6 +7,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: $background-footer-pagination;
   min-width: 280px;
 
@@ -48,7 +49,7 @@
   white-space: nowrap;
 
   @media screen and (max-width: 768px) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 14px;
     line-height: 1.14;
   }
