@@ -3,6 +3,7 @@
   padding-top: 40px;
   background-color: $background-under-image;
   width: 100%;
+  min-width: 280px;
   color: $white;
   background-size: cover;
   background-position: center;
@@ -10,14 +11,17 @@
 }
 
 .header__index {
-  background-image: linear-gradient($background-under-image, $background-under-image), url(../images/index-mob-x1.jpg);
+  background-image: linear-gradient($background-under-image, $background-under-image),
+    url(../images/index-mob-x1.jpg);
 
   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-    background-image: linear-gradient($background-under-image, $background-under-image), url(../images/index-mob-x2.jpg);
+    background-image: linear-gradient($background-under-image, $background-under-image),
+      url(../images/index-mob-x2.jpg);
   }
 
   @media screen and (min-width: 768px) {
-    background-image: linear-gradient($background-under-image, $background-under-image), url(../images/index-tab-x1.jpg);
+    background-image: linear-gradient($background-under-image, $background-under-image),
+      url(../images/index-tab-x1.jpg);
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
       background-image: linear-gradient($background-under-image, $background-under-image),
@@ -37,22 +41,27 @@
 }
 
 .header__lib {
-  background-image: linear-gradient($background-under-image, $background-under-image), url(../images/lib-mob-x1.jpg);
+  background-image: linear-gradient($background-under-image, $background-under-image),
+    url(../images/lib-mob-x1.jpg);
 
   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-    background-image: linear-gradient($background-under-image, $background-under-image), url(../images/lib-mob-x2.jpg);
+    background-image: linear-gradient($background-under-image, $background-under-image),
+      url(../images/lib-mob-x2.jpg);
   }
 
   @media screen and (min-width: 768px) {
-    background-image: linear-gradient($background-under-image, $background-under-image), url(../images/lib-tab-x1.jpg);
+    background-image: linear-gradient($background-under-image, $background-under-image),
+      url(../images/lib-tab-x1.jpg);
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-      background-image: linear-gradient($background-under-image, $background-under-image), url(../images/lib-tab-x2.jpg);
+      background-image: linear-gradient($background-under-image, $background-under-image),
+        url(../images/lib-tab-x2.jpg);
     }
   }
 
   @media screen and (min-width: 1200px) {
-    background-image: linear-gradient($background-under-image, $background-under-image), url(../images/lib-desk-x1.jpg);
+    background-image: linear-gradient($background-under-image, $background-under-image),
+      url(../images/lib-desk-x1.jpg);
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
       background-image: linear-gradient($background-under-image, $background-under-image),
@@ -83,10 +92,7 @@
   &--start {
     margin-right: 10px;
   }
-
 }
-
-
 
 .header-logo__site-name {
   font-weight: 500;
@@ -140,7 +146,7 @@
 }
 
 .header-nav__item--current-link-color::after {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   background-color: $theme-orange;
