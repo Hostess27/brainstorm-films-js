@@ -10,14 +10,14 @@
   background-color: $background-footer-pagination;
   min-width: 280px;
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    padding-bottom: 100px;
-    height: 100px;
-  }
-  @media screen and (min-width: 1024px) {
-    padding-bottom: 80px;
-    height: 80px;
-  }
+  // @media screen and (min-width: 768px) and (max-width: 1024px) {
+  //   padding-bottom: 100px;
+  //   height: 100px;
+  // }
+  // @media screen and (min-width: 1024px) {
+  //   padding-bottom: 80px;
+  //   height: 80px;
+  // }
 }
 
 .flex-footer {
