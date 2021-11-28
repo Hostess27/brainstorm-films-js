@@ -3,6 +3,7 @@ import templateQuery from '../templates/filmCard.hbs';
 import { success, error } from './notify.js';
 import { addSpinner, removeSpinner } from './spinner';
 import {filmLoader} from './library-service';
+import { doc } from '@firebase/firestore';
 
 //КОНСТАНТА- ключ к АPI
 const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
@@ -16,14 +17,11 @@ const searchFormInput = document.querySelector('.search-form__input');
 const container = document.getElementById('tui-pagination-container');
 const currentPage = 1;
 
-
-
-
 //Считываю текст в инпуте 
 formValueFef.addEventListener('click', getFormTextContent);
-//  if (searchFormInput.value != "") return;
 
 async function getFormTextContent(evt) {
+    //Выключаю автоматическую перезагрузку страницы
     evt.preventDefault();
 
     if (searchFormInput.value != "") {
@@ -33,6 +31,7 @@ async function getFormTextContent(evt) {
     
         if (data.results.length > 0) {
             ulListRef.innerHTML = ``;
+            
             //Общее кол-во найденных фильмов
             const total = data.total_results;
             const results = data.results;
@@ -61,7 +60,9 @@ async function getFormTextContent(evt) {
             ulListRef.innerHTML = ``;
             searchFormInput.value = "";
             container.remove()
-            ulListRef.insertAdjacentHTML('afterbegin', `<img src = "https://cdn.dribbble.com/users/1322726/screenshots/5695684/media/a01e5969a7eca6426880f81d8b15e0e8.gif" width="100%" height="100%"/>`);
+            
+            ulListRef.insertAdjacentHTML('afterbegin', `<p class="image-list-empty library-text neon xz">ничего не найдено...</p> <img src ="/theatre1.1adc50f8.png" class="search-image_position"/>`);
+
             error({
                 title: 'OOPS!',
                 text: 'Nothing found!',
