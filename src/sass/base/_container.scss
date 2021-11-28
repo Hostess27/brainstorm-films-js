@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto;
-  padding-bottom: 150px;
+  // padding-bottom: 150px;
 }
 @media screen and (min-width: 280px) {
   .container {
@@ -12,13 +12,13 @@
   .container {
     width: 768px;
     padding: 0 75px;
-    padding-bottom: 100px;
+    // padding-bottom: 100px;
   }
 }
 @media screen and (min-width: 1024px) {
   .container {
     width: 1024px;
     padding: 0 71px;
-    padding-bottom: 80px;
+    // padding-bottom: 80px;
   }
 }
