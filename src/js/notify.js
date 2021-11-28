@@ -3,8 +3,6 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
 import '@pnotify/core/dist/Angeler.css';
 import * as PNotifyMobile from '@pnotify/mobile/dist/PNotifyMobile.js';
-// import * as PNotifyAnimate from '@pnotify/animate';
-import 'animate.css';
 
 const myStack = new Stack({
   animation: 'slide',
