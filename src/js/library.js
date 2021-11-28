@@ -15,6 +15,7 @@ const refs =
     section: document.querySelector('.js-section-library'),
     btnLibrary: document.querySelectorAll('.js-nav-btn-library'),
     btnHome: document.querySelectorAll('.js-nav-btn-home'),
+    pagination: document.querySelector('.js-fix'),
 }
 
 
@@ -26,6 +27,7 @@ for (let i = 0; i < refs.btnLibrary.length; i++)
 {
     refs.btnLibrary[i].addEventListener("click", () => 
     {
+        refs.pagination.classList.add('visually-hidden');
         refs.btnWatched.classList.add("button--orange");
         refs.btnQueue.classList.remove("button--orange");
         //загружаю список
@@ -36,10 +38,11 @@ for (let i = 0; i < refs.btnLibrary.length; i++)
 for (let i = 0; i < refs.btnHome.length; i++) 
 {
     refs.btnHome[i].addEventListener("click", () => 
-{
-    refs.section.classList.remove('visually-hidden');
-    refs.message.classList.add('visually-hidden');
-});
+    {
+        refs.pagination.classList.remove('visually-hidden');
+        refs.section.classList.remove('visually-hidden');
+        refs.message.classList.add('visually-hidden');
+    });
 }
 
 
