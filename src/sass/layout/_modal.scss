@@ -385,6 +385,63 @@ body.modal-open {
 
 /*Switch theme*/
 
-// .theme-switch__toggle:checked + .modal {
-//   background-color: $logo-icon-grey;
-// }
+body.light-theme {
+  background-color: #fff;
+  color: #333333;
+}
+
+body.dark-theme {
+  .modal {
+    background-color: #333333;
+    color: #fff;
+
+    .modal__btn-close {
+      background-color: #333333;
+      fill: #fff;
+    }
+
+    .film-detail_title {
+      color: #fff;
+    }
+
+    .film-detail__values--black {
+      color: #fff;
+    }
+
+    .film-detail__about {
+      color: #fff;
+    }
+
+    .film-detail__description {
+      color: #fff;
+    }
+
+    .film-details__buttons-add-to-watched,
+    .film-details__buttons-add-to-queue {
+      background-color: #8c8c8c;
+      color: #fff;
+      border-color: #fff;
+    }
+
+    .film-details__buttons-add-to-watched:hover,
+    .film-details__buttons-add-to-watched:focus {
+      background-color: #ff6b01;
+      border-color: #ff6b01;
+      color: #ffffff;
+    }
+
+    .film-details__buttons-add-to-queue:hover,
+    .film-details__buttons-add-to-queue:focus {
+      background-color: #ff6b01;
+      border-color: #ff6b01;
+      color: #ffffff;
+    }
+
+    .modal__btn-close {
+      &:hover,
+      &:focus {
+        fill: #ff6b01;
+      }
+    }
+  }
+}
