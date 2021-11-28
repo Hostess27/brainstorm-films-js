@@ -16,11 +16,12 @@ const ulListRef = document.querySelector(".gallery");
 const searchFormInput = document.querySelector('.search-form__input');
 
 const currentPage = 1;
+
 //Считываю текст в инпуте 
 formValueFef.addEventListener('click', getFormTextContent);
-//  if (searchFormInput.value != "") return;
 
 async function getFormTextContent(evt) {
+    //Выключаю автоматическую перезагрузку страницы
     evt.preventDefault();
 
     if (searchFormInput.value != "") {
@@ -30,6 +31,7 @@ async function getFormTextContent(evt) {
     
         if (data.results.length > 0) {
             ulListRef.innerHTML = ``;
+            
             //Общее кол-во найденных фильмов
             const total = data.total_results;
             const results = data.results;
