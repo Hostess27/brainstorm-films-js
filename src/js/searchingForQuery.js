@@ -28,7 +28,7 @@ async function getFormTextContent(evt) {
         addSpinner();
     
         const data = await searchForQuery(KEY, searchFormInput.value, currentPage);
-    
+        
         if (data.results.length > 0) {
             ulListRef.innerHTML = ``;
             
@@ -60,8 +60,9 @@ async function getFormTextContent(evt) {
             ulListRef.innerHTML = ``;
             searchFormInput.value = "";
             container.remove()
-            
+
             ulListRef.insertAdjacentHTML('afterbegin', `<p class="image-list-empty library-text neon xz">ничего не найдено...</p> <img src ="https://img.icons8.com/ios/100/000000/drama.png" class="search-image_position"/>`);
+
             error({
                 title: 'OOPS!',
                 text: 'Nothing found!',
