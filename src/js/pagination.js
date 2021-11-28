@@ -5,8 +5,9 @@ import 'tui-pagination/dist/tui-pagination.css';
 import FetchFromTrendingMovies from './api';
 import { renderGalleryTrendingMovie, clearGalleryTrendingMovi } from './render';
 import responseForQuery from './responseForQuery';
+import {filmLoader} from './library-service';
 const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
-const trendingMovies = new FetchFromTrendingMovies()
+const trendingMovies = new FetchFromTrendingMovies();
 const formValueFef = document.querySelector(".search-button-js");
 const searchFormInput = document.querySelector('.search-form__input');
 const filmListContainerEl = document.querySelector(".js-container-pagination");
@@ -68,31 +69,59 @@ if ((clickOnSearchButton == false) && (inputQuery == "")) {
   } else { options.visiblePages = 5 }
   pagination(options.page, options.visiblePages)
 }
-function pagination(page) {
+async function pagination(page) {
   const pagination = new Pagination(container, { ...options });
   pagination.reset()
   pagination.getCurrentPage();
-  pagination.on('afterMove', ({ page }) => {
+  pagination.on('afterMove', async ( { page }) => {
     trendingMovies.clickPage = page
     if ((clickOnSearchButton == false) && (inputQuery == "")) {
-      trendingMovies.fetchTrending()
-        .then(data => {
-          clearGalleryTrendingMovi(),
-          data.map( film => renderGalleryTrendingMovie(film))
-        })
-        .catch(error => {
-            console.log(error)
-        });
+        clearGalleryTrendingMovi();
+        const data = await trendingMovies.fetchTrending();
+        console.log("DATA", data);
+      //   if (!data.length) {
+      //      () =>
+      //     error({
+      //       title: 'Error!',
+      //       text: 'Loading Error',
+      //     });
+      // }
+      const filmsIdArr = data.map(film => film.id);
+      await filmsIdArr.map(async id =>
+      {
+        const film = await filmLoader.loadFilmById(Number(id));
+        if(film.genres.length > 3)
+        {
+          film.genres = [...film.genres.slice(0, 3), {id: "00000", name: "other..."}];
+        }
+        renderGalleryTrendingMovie(film);
+      })
+        // .catch(error => {
+        //     console.log(error)
+        // });
         return
   }
     if ((clickOnSearchButton == true) && (inputQuery != "")) {
+      
       responseForQuery(KEY, inputQuery, page)
-          .then((data) => {            const arrayOfFilms = data.results;
-            clearGalleryTrendingMovi();
-            arrayOfFilms.map(film => renderGalleryTrendingMovie(film));          })
-          .catch(error => {
-            console.log(error)
-          });
+        .then(async (data) => {
+          const arrayOfFilms = data.results;
+          clearGalleryTrendingMovi();
+            // arrayOfFilms.map(film => renderGalleryTrendingMovie(film)
+            // );
+            const filmsIdArr = data.results.map(film => film.id);
+            await filmsIdArr.map(async id => {
+              const film = await filmLoader.loadFilmById(Number(id));
+              if (film.genres.length > 3) {
+                film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
+              }
+              renderGalleryTrendingMovie(film);
+            })
+
+          })
+          // .catch(error => {
+          //   console.log(error)
+          // });
     }
   });
   document.addEventListener('unload', localStorage.setItem('currentQuery', ""))
