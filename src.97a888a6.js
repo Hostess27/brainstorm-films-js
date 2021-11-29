@@ -157,4 +157,4 @@ const e={closeModalTeamBtn:document.querySelector("[data-modal-team-close]"),mod
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./templates/filmCard.hbs"),require("./js/searchingForQuery.js"),require("./js/themeSwitcher"),require("./js/spinner.js"),require("./js/render-movies-on-start-page"),require("./js/firebaze.js"),require("./js/heard"),require("./js/refresh-page-on-click-filmoteka.js"),require("./js/pagination.js"),require("./js/scroll.js"),require("./js/library.js"),require("./js/modal.js"),require("./js/modalTeam.js");
 },{"./sass/main.scss":"clu1","./templates/filmCard.hbs":"rrA0","./js/searchingForQuery.js":"m50j","./js/themeSwitcher":"qgSZ","./js/spinner.js":"Sc1o","./js/render-movies-on-start-page":"CVxu","./js/firebaze.js":"IiH6","./js/heard":"blbH","./js/refresh-page-on-click-filmoteka.js":"YpDg","./js/pagination.js":"o8lo","./js/scroll.js":"N8YO","./js/library.js":"BfNj","./js/modal.js":"RSqK","./js/modalTeam.js":"fDFk"}]},{},["Focm"], null)
-//# sourceMappingURL=/brainstorm-films-js/src.ff496635.js.map
+//# sourceMappingURL=/brainstorm-films-js/src.97a888a6.js.map
