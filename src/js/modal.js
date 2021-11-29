@@ -43,6 +43,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
     refs.closeModalBtn.addEventListener('click', () =>
     {
       if(isTrailerLoaded) stopVideo();
+      removeNoTrailerStyles();
       toggleModal();
     });
 
@@ -56,6 +57,12 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
     {
       document.body.classList.toggle("modal-open");
       refs.modal.classList.toggle('backdrop--is-hidden');
+    }
+
+    function removeNoTrailerStyles()
+    {
+      document.querySelector('.film-detail__description-container').classList.remove('no-trailer');
+      document.querySelector('.modal').classList.remove('modal-no-trailer');
     }
 
     async function renderFilmDetails(id)
@@ -75,6 +82,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
       {
         isTrailerLoaded = false;
         document.querySelector('.film-detail__description-container').classList.add('no-trailer');
+        document.querySelector('.modal').classList.add('modal-no-trailer');
       }
       toggleModal();
       //buttons
@@ -119,6 +127,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
       const element = evt.target.closest('.modal');
       if(element) return;
       if(isTrailerLoaded) stopVideo();
+      removeNoTrailerStyles();
       toggleModal();
     });
 
@@ -128,6 +137,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
         if(evt.code === "Escape" && document.body.classList.contains('modal-open')) 
         {
           if(isTrailerLoaded) stopVideo();
+          removeNoTrailerStyles();
           toggleModal();
         }
     });
