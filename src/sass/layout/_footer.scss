@@ -105,3 +105,25 @@
 .icon-heard-js {
   animation: heartbeat 1s infinite;
 }
+
+/*Dark Theme*/
+
+body.dark-theme {
+  .footer-color {
+    background-color: #1c1813;
+
+    .creator {
+      color: #fff;
+    }
+
+    .developed {
+      background-color: #1c1813;
+      color: #818181;
+
+      &:hover,
+      &:focus {
+        color: $theme-orange;
+      }
+    }
+  }
+}
