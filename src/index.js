@@ -14,6 +14,7 @@ import './js/heard';
 import './js/refresh-page-on-click-filmoteka.js';
 import './js/pagination.js';
 import './js/scroll.js';
+import './js/right-scroll.js'
 import './js/library.js';
 import './js/modal.js';
 import './js/modalTeam.js'
