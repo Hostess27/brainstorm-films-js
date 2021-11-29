@@ -52,7 +52,7 @@ span {
     }
 
     @media screen and (min-width: 768px) and (max-width: 1024px) {
-      height: 100%;
+      height: auto;
       max-height: 585px;
       max-width: 618px;
       padding: 42px 30px 40px 28px;
