@@ -87,6 +87,7 @@
 }
 
 .modal-team__btn-close {
+  transition: 0.6s;
   &:hover,
   &:focus {
     fill: $theme-orange;
@@ -208,7 +209,6 @@ body.modal-team-open {
 }
 
 .modal-team__name {
-  color: $black;
   display: flex;
   align-items: center;
   font-family: Roboto, sans-serif;
@@ -256,9 +256,11 @@ body.modal-team-open {
 
 .modal-team__icon-git {
   margin-top: 10px;
+  transition: 0.6s;
   &:hover,
   &:focus {
     fill: $theme-orange;
+    transition: 0.6s;
   }
 }
 
@@ -272,11 +274,6 @@ body.modal-team-open {
 .flip-container {
   perspective: 1000;
 }
-/* переверните сторону при проведении мышью */
-// .flip-container:focus .flipper,
-// .flip-container.focus .flipper {
-//   transform: rotateY(180deg);
-// }
 
 .flip-container,
 .front,
@@ -321,4 +318,29 @@ body.modal-team-open {
 /* обратная, изначально скрытая сторона */
 .back {
   transform: rotateY(180deg);
+}
+
+//Switch theme
+
+body.dark-theme {
+  .modal-team {
+    background-color: #333333;
+    color: $white;
+
+    .modal-team__btn-close {
+      background-color: #333333;
+      fill: $white;
+      transition: 0.6s;
+    }
+
+    .modal-team__btn-close {
+      &:hover,
+      &:focus {
+        fill: $theme-orange;
+      }
+    }
+  }
+  .modal-team__list {
+    background-color: #333333;
+  }
 }
