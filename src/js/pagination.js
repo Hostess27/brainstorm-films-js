@@ -41,24 +41,25 @@ const options = {
     //  visiblePages: 3,
      page: 1,
      centerAlign: false,
-     firstItemClassName: 'tui-first-child',
-     lastItemClassName: 'tui-last-child',
+     firstItemClassName: 'tui-first-child-x',
+     lastItemClassName: 'tui-last-child-x',
      template: {
-         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+         page: '<a href="#" class="tui-page-btn-x">{{page}}</a>',
+         currentPage: '<strong class="tui-page-btn-x tui-is-selected-x">{{page}}</strong>',
          moveButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}">' +
+             '<a href="#" class="tui-page-btn-x tui-{{type}}">' +
                  '<span class="tui-ico-{{type}}">{{type}}</span>' +
              '</a>',
          disabledMoveButton:
-             '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+             '<span class="tui-page-btn-x tui-is-disabled-x tui-{{type}}">' +
                  '<span class="tui-ico-{{type}}">{{type}}</span>' +
              '</span>',
          moreButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+             '<a href="#" class="tui-page-btn-x tui-{{type}}-is-ellip">' +
                  '<span class="tui-ico-ellip">...</span>' +
              '</a>'
   }
+     
    
 };
 if ((clickOnSearchButton == false) && (inputQuery == "")) {
