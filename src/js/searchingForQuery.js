@@ -23,6 +23,7 @@ formValueFef.addEventListener('click', getFormTextContent);
 async function getFormTextContent(evt) {
     //Выключаю автоматическую перезагрузку страницы
     evt.preventDefault();
+    container.classList.remove('visually-hidden')
 
     if (searchFormInput.value != "") {
         addSpinner();
@@ -59,7 +60,7 @@ async function getFormTextContent(evt) {
         } else {
             ulListRef.innerHTML = ``;
             searchFormInput.value = "";
-            container.remove()
+            container.classList.add('visually-hidden')
 
             ulListRef.insertAdjacentHTML('afterbegin', `<p class="image-list-empty library-text neon xz js_correct">ничего не найдено...</p><span class="js-my_bcg"></span> `);
 
