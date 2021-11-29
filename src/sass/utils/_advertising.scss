@@ -1,0 +1,26 @@
+.hiden-btn {
+  position: absolute;
+  right: 50%;
+}
+
+.advertising-btn {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.advertising-container {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  border-radius: 4px;
+  background-color: rgb(132, 125, 114);
+}
+
+.advertising-box {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
