@@ -1,4 +1,4 @@
-import { addScrollHideWidth } from './right-scroll';
+import { addScrollHideWidth } from './rightScroll';
 
 const refs = {
     closeModalTeamBtn: document.querySelector('[data-modal-team-close]'),
