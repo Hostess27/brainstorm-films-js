@@ -256,3 +256,56 @@
   padding: 8px 0 6px;
   vertical-align: top;
 }
+
+/*Dark Theme*/
+body.dark-theme {
+  .tui-pagination-x .tui-is-disabled-x .tui-ico-first {
+    background-position: 0px 0px;
+  }
+
+  .tui-page-btn-x .tui-ico-first,
+  .tui-page-btn-x .tui-ico-prev {
+    background-position: -13px 0px;
+  }
+
+  .tui-pagination-x .tui-is-disabled-x .tui-ico-prev {
+    background-position: 0px 0px;
+  }
+
+  .tui-page-btn-x .tui-ico-next {
+    background-position: -21px -24px;
+  }
+
+  .tui-pagination-x .tui-ico-last {
+    background-position: -13px -12px;
+  }
+
+  .tui-is-disabled-x .tui-ico-next,
+  .tui-is-disabled-x .tui-ico-last {
+    background-position: 0px -24px;
+  }
+
+  // .tui-page-btn-x .tui-ico-next {
+  //   background-position: -13px -24px;
+  // }
+
+  // .tui-pagination-x .tui-ico-last {
+  //   background-position: 0px -12px;
+  // }
+
+  .tui-pagination-x .tui-is-disabled-x:hover,
+  .tui-pagination-x .tui-is-disabled-x:focus {
+    background: #333333;
+    cursor: default;
+  }
+
+  .tui-page-btn-x:hover {
+    background-color: #ff6b08;
+  }
+
+  // .tui-next-is-ellip,
+  .tui-ico-ellip {
+    background-position: 0px -22px;
+    background-color: white;
+  }
+}
