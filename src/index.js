@@ -19,5 +19,4 @@ import './js/library.js';
 import './js/modal.js';
 import './js/modalTeam.js'
 import './js/upBtn.js'
-import './js/hideFocusCard.js'
 import './js/easter-egg.js'
