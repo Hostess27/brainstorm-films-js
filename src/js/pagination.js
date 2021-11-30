@@ -118,20 +118,23 @@ async function pagination(page) {
           clearGalleryTrendingMovi();
             // arrayOfFilms.map(film => renderGalleryTrendingMovie(film)
             // );
-            data.map(film => 
-              {
-                let genres =  genreLoader.getGenres(film.genre_ids);
-                if (genres.length > 3) 
+            if(data)
+            {
+              data.map(film => 
                 {
-                  film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
-                }
-                else
-                {
-                   film.genres = genres;
-                }
-                renderGalleryTrendingMovie(film);
-              });
-          })
+                  let genres =  genreLoader.getGenres(film.genre_ids);
+                  if (genres.length > 3) 
+                  {
+                    film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
+                  }
+                  else
+                  {
+                     film.genres = genres;
+                  }
+                  renderGalleryTrendingMovie(film);
+                });
+            }
+          });
           // .catch(error => {
           //   console.log(error)
           // });

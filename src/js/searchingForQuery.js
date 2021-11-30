@@ -44,22 +44,24 @@ async function getFormTextContent(evt) {
             // text: `Success! There are ${total} films in ${pages} page(s)`,
             // })
         
-            //Получаю айдишники фильмов
-            data.results.map(film => 
-                {
-                  let genres =  genreLoader.getGenres(film.genre_ids);
-                  if (genres.length > 3) 
-                  {
-                    film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
-                  }
-                  else
-                  {
-                     film.genres = genres;
-                  }
-                    ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
-                    searchFormInput.value = "";
-                    removeSpinner();
-                });
+            if(data.results)
+            {
+                data.results.map(film => 
+                    {
+                      let genres =  genreLoader.getGenres(film.genre_ids);
+                      if (genres.length > 3) 
+                      {
+                        film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
+                      }
+                      else
+                      {
+                         film.genres = genres;
+                      }
+                        ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
+                        searchFormInput.value = "";
+                        removeSpinner();
+                    });
+            }
                            
         } else {
             ulListRef.innerHTML = ``;

@@ -24,19 +24,22 @@ async function renderMovieOnStartPage() {
         text: 'Loading Error',
       });
   }
-  data.map(film => 
-    {
-      let genres =  genreLoader.getGenres(film.genre_ids);
-      if (genres.length > 3) 
+  if(data)
+  {
+    data.map(film => 
       {
-        film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
-      }
-      else
-      {
-         film.genres = genres;
-      }
-      renderGalleryTrendingMovie(film);
-      removeSpinner();
-    });
+        let genres =  genreLoader.getGenres(film.genre_ids);
+        if (genres.length > 3) 
+        {
+          film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
+        }
+        else
+        {
+           film.genres = genres;
+        }
+        renderGalleryTrendingMovie(film);
+        removeSpinner();
+      });
+  }
 }
 export default renderMovieOnStartPage;
