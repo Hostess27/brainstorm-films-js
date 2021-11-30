@@ -10,7 +10,6 @@ export const genreLoader =
         const response = await fetch(`${BASE_URL}?api_key=${API_KEY}&language=en-US`);
         const data = await response.json();
         this.GENRES = data.genres;
-        console.log("ЗАГРУЗКА СПИСКА ЖАНРОВ!!!");
     },
 
     getGenres(arrIds)
