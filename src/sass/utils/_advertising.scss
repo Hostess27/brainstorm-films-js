@@ -12,13 +12,18 @@
 
 .advertising-container {
   position: absolute;
+  padding: 20px;
+  top: 50%;
+  left: 50px;
   width: 200px;
   height: 300px;
   border-radius: 4px;
-  background-color: rgb(132, 125, 114);
+  border-width: 2px 2px 2px 2px;
+  border-style: dashed;
 }
 
 .advertising-box {
+  color: $theme-orange;
   height: 100%;
   display: flex;
   align-items: center;
