@@ -2,7 +2,8 @@ import { filmLoader } from "./modal-service";
 import { videoLoader } from "./modal-service";
 import ModalFilmRenderer from "./modal-renderer";
 import { filmFirebaseStorage } from "./film-firebase-storage";
-import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
+import { onYouTubeIframeAPIReady, stopVideo } from './youtube-api';
+import { addScrollHideWidth } from './rightScroll';
 
 (() => 
 {
@@ -57,6 +58,7 @@ import { onYouTubeIframeAPIReady, stopVideo} from './youtube-api';
     {
       document.body.classList.toggle("modal-open");
       refs.modal.classList.toggle('backdrop--is-hidden');
+      addScrollHideWidth();
     }
 
     function removeNoTrailerStyles()

@@ -1,3 +1,5 @@
+import { addScrollHideWidth } from './rightScroll';
+
 const refs = {
     closeModalTeamBtn: document.querySelector('[data-modal-team-close]'),
     modalTeam: document.querySelector('[data-modal-team]'),
@@ -13,11 +15,13 @@ function CloseModalTeam() {
     document.body.classList.remove('modal-team-open');
     refs.modalTeam.classList.add('backdrop--is-hidden');
     defaultImgFlip();
+    addScrollHideWidth();
 };
 
 function OpenModalTeam() {
     document.body.classList.add('modal-team-open');
     refs.modalTeam.classList.remove('backdrop--is-hidden');
+    addScrollHideWidth();
 };
 
 refs.modalTeamBackdrop.addEventListener('click', evt => {
