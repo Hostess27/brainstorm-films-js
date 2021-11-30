@@ -4,6 +4,7 @@ import { success, error } from './notify.js';
 import { addSpinner, removeSpinner } from './spinner';
 import {filmLoader} from './library-service';
 import { doc } from '@firebase/firestore';
+import { genreLoader } from './genres-service';
 
 //КОНСТАНТА- ключ к АPI
 const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
@@ -44,18 +45,21 @@ async function getFormTextContent(evt) {
             // })
         
             //Получаю айдишники фильмов
-            const filmsIdArr = data.results.map(film => film.id);
-            await filmsIdArr.map(async id => {
-                const film = await filmLoader.loadFilmById(Number(id));
-                if (film.genres.length > 3) {
-                    film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
-                }
-
-                
-                ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
-                searchFormInput.value = "";
-                removeSpinner();
-            });
+            data.results.map(film => 
+                {
+                  let genres =  genreLoader.getGenres(film.genre_ids);
+                  if (genres.length > 3) 
+                  {
+                    film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
+                  }
+                  else
+                  {
+                     film.genres = genres;
+                  }
+                    ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
+                    searchFormInput.value = "";
+                    removeSpinner();
+                });
                            
         } else {
             ulListRef.innerHTML = ``;

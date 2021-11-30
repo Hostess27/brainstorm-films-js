@@ -6,12 +6,15 @@ import '@pnotify/mobile/dist/PNotifyMobile.css';
 import '@pnotify/core/dist/BrightTheme.css';
 import { filmLoader } from './library-service';
 import {addSpinner, removeSpinner} from './spinner';
+import { genreLoader } from './genres-service';
 
 const fetchFromTrendingMovies = new FetchFromTrendingMovies();
 window.addEventListener('DOMContentLoaded', renderMovieOnStartPage);
 addSpinner();
 
 async function renderMovieOnStartPage() {
+  //Загружаю список жанров
+  await genreLoader.loadGenresList();
   const data = await fetchFromTrendingMovies.fetchTrending();
   console.log('DATA', data);
   if (!data.length) {
@@ -21,14 +24,19 @@ async function renderMovieOnStartPage() {
         text: 'Loading Error',
       });
   }
-  const filmsIdArr = data.map(film => film.id);
-  await filmsIdArr.map(async id => {
-    const film = await filmLoader.loadFilmById(Number(id));
-    if (film.genres.length > 3) {
-      film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
-    }
-    renderGalleryTrendingMovie(film);
-    removeSpinner();
-  });
+  data.map(film => 
+    {
+      let genres =  genreLoader.getGenres(film.genre_ids);
+      if (genres.length > 3) 
+      {
+        film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
+      }
+      else
+      {
+         film.genres = genres;
+      }
+      renderGalleryTrendingMovie(film);
+      removeSpinner();
+    });
 }
 export default renderMovieOnStartPage;
