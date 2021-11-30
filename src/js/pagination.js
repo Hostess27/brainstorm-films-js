@@ -6,6 +6,9 @@ import FetchFromTrendingMovies from './api';
 import { renderGalleryTrendingMovie, clearGalleryTrendingMovi } from './render';
 import responseForQuery from './responseForQuery';
 import {filmLoader} from './library-service';
+import { genreLoader } from './genres-service';
+
+
 const KEY = "c69608b9bc251fbb333be1b2d7a49ce6";
 const trendingMovies = new FetchFromTrendingMovies();
 const formValueFef = document.querySelector(".search-button-js");
@@ -87,16 +90,21 @@ async function pagination(page) {
       //       text: 'Loading Error',
       //     });
       // }
-      const filmsIdArr = data.map(film => film.id);
-      await filmsIdArr.map(async id =>
-      {
-        const film = await filmLoader.loadFilmById(Number(id));
-        if(film.genres.length > 3)
+
+      //Получаю айдишники фильмов
+      data.map(film => 
         {
-          film.genres = [...film.genres.slice(0, 3), {id: "00000", name: "other..."}];
-        }
-        renderGalleryTrendingMovie(film);
-      })
+          let genres =  genreLoader.getGenres(film.genre_ids);
+          if (genres.length > 3) 
+          {
+            film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
+          }
+          else
+          {
+             film.genres = genres;
+          }
+          renderGalleryTrendingMovie(film);
+        });
         // .catch(error => {
         //     console.log(error)
         // });
@@ -110,16 +118,23 @@ async function pagination(page) {
           clearGalleryTrendingMovi();
             // arrayOfFilms.map(film => renderGalleryTrendingMovie(film)
             // );
-            const filmsIdArr = data.results.map(film => film.id);
-            await filmsIdArr.map(async id => {
-              const film = await filmLoader.loadFilmById(Number(id));
-              if (film.genres.length > 3) {
-                film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
-              }
-              renderGalleryTrendingMovie(film);
-            })
-
-          })
+            if(data)
+            {
+              data.map(film => 
+                {
+                  let genres =  genreLoader.getGenres(film.genre_ids);
+                  if (genres.length > 3) 
+                  {
+                    film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
+                  }
+                  else
+                  {
+                     film.genres = genres;
+                  }
+                  renderGalleryTrendingMovie(film);
+                });
+            }
+          });
           // .catch(error => {
           //   console.log(error)
           // });
