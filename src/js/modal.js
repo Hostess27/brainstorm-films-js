@@ -4,7 +4,6 @@ import ModalFilmRenderer from "./modal-renderer";
 import { filmFirebaseStorage } from "./film-firebase-storage";
 import { onYouTubeIframeAPIReady, stopVideo } from './youtube-api';
 import { addScrollHideWidth } from './rightScroll';
-import { genreLoader } from './genres-service';
 
 (() => 
 {
