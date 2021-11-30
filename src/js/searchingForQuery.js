@@ -44,7 +44,7 @@ async function getFormTextContent(evt) {
             // text: `Success! There are ${total} films in ${pages} page(s)`,
             // })
         
-            if(data.results)
+            if(data)
             {
                 data.results.map(film => 
                     {
