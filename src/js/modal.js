@@ -4,7 +4,6 @@ import ModalFilmRenderer from "./modal-renderer";
 import { filmFirebaseStorage } from "./film-firebase-storage";
 import { onYouTubeIframeAPIReady, stopVideo } from './youtube-api';
 import { addScrollHideWidth } from './rightScroll';
-import { hideFocus } from './hideFocusCard';
 
 (() => 
 {
@@ -60,7 +59,6 @@ import { hideFocus } from './hideFocusCard';
       document.body.classList.toggle("modal-open");
       refs.modal.classList.toggle('backdrop--is-hidden');
       addScrollHideWidth();
-      hideFocus();
     }
 
     function removeNoTrailerStyles()
