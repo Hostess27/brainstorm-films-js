@@ -202,7 +202,7 @@
 .tui-pagination-x .tui-ico-ellip {
   width: 10px;
   height: 2px;
-  margin-top: 16px;
+  margin-top: 20px;
   vertical-align: top;
   background-position: 0px -24px;
 }
@@ -285,14 +285,6 @@ body.dark-theme {
     background-position: 0px -24px;
   }
 
-  // .tui-page-btn-x .tui-ico-next {
-  //   background-position: -13px -24px;
-  // }
-
-  // .tui-pagination-x .tui-ico-last {
-  //   background-position: 0px -12px;
-  // }
-
   .tui-pagination-x .tui-is-disabled-x:hover,
   .tui-pagination-x .tui-is-disabled-x:focus {
     background: #333333;
@@ -300,10 +292,9 @@ body.dark-theme {
   }
 
   .tui-page-btn-x:hover {
-    background-color: #ff6b08;
+    background-color: #a0522d;
   }
 
-  // .tui-next-is-ellip,
   .tui-ico-ellip {
     background-position: 0px -22px;
     background-color: white;
