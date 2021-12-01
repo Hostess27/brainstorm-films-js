@@ -83,32 +83,17 @@ async function pagination(page) {
         clearGalleryTrendingMovi();
         const data = await trendingMovies.fetchTrending();
         console.log("DATA", data);
-      //   if (!data.length) {
-      //      () =>
-      //     error({
-      //       title: 'Error!',
-      //       text: 'Loading Error',
-      //     });
-      // }
-
-      //Получаю айдишники фильмов
+      //ГЛАВНАЯ - ПАГИНАЦИЯ
       data.map(film => 
         {
-          let genres =  genreLoader.getGenres(film.genre_ids);
-          if (genres.length > 3) 
+          film.genres = genreLoader.getGenres(film.genre_ids);
+          // console.log("ЖАНРЫ = ", genres);
+          if (film.genres.length > 3) 
           {
-            film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
-          }
-          else
-          {
-             film.genres = genres;
+            film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
           }
           renderGalleryTrendingMovie(film);
         });
-        // .catch(error => {
-        //     console.log(error)
-        // });
-        return
   }
     if ((clickOnSearchButton == true) && (inputQuery != "")) {
       
@@ -116,28 +101,22 @@ async function pagination(page) {
         .then(async (data) => {
           const arrayOfFilms = data.results;
           clearGalleryTrendingMovi();
-            // arrayOfFilms.map(film => renderGalleryTrendingMovie(film)
-            // );
+            // ПОИСК - ПАГИНАЦИЯ
             if(data)
             {
-              data.map(film => 
+             await data.results.map(film => 
                 {
-                  let genres =  genreLoader.getGenres(film.genre_ids);
-                  if (genres.length > 3) 
+                  film.genres = genreLoader.getGenres(film.genre_ids);
+                  // console.log("ЖАНРЫ = ", genres);
+                  if (film.genres.length > 3) 
                   {
-                    film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
-                  }
-                  else
-                  {
-                     film.genres = genres;
+                      film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
                   }
                   renderGalleryTrendingMovie(film);
                 });
             }
+
           });
-          // .catch(error => {
-          //   console.log(error)
-          // });
     }
   });
   document.addEventListener('unload', localStorage.setItem('currentQuery', ""))
