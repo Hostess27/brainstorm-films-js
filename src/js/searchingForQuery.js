@@ -22,6 +22,8 @@ let currentPage = 1;
 formValueFef.addEventListener('click', getFormTextContent);
 
 async function getFormTextContent(evt) {
+    //Загружаю список жанров
+//   await genreLoader.loadGenresList();
     //Выключаю автоматическую перезагрузку страницы
     evt.preventDefault();
     container.classList.remove('visually-hidden')
