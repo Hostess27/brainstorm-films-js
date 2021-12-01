@@ -17,31 +17,31 @@ const filmListContainerEl = document.querySelector(".js-container-pagination");
 const filmItemEl = document.querySelector("li .gallery__item");
 const container = document.getElementById('tui-pagination-container');
 
-let inputQuery = ""
+let inputQuery = "";
 let clickOnSearchButton = false;
 formValueFef.addEventListener('click', getImputContent);
 
-function getImputContent() {
+async function getImputContent() {
   clickOnSearchButton = true;
   inputQuery = searchFormInput.value;
+  console.log("INPUT = ", inputQuery);
   if ((clickOnSearchButton == true) && (inputQuery != "")) {
-  responseForQuery(KEY, searchFormInput.value)
+  await responseForQuery(KEY, searchFormInput.value, 1)
   .then((data) => {
     console.log(data.total_pages)
     options.totalItems = data.total_results
     options.visiblePages= 5
     options.page=data.total_pages
-  inputQuery = searchFormInput.value;
-  pagination(options.page, options.visiblePages)
+  pagination(options.page, options)
   })
   }
-  pagination(options.page, options.visiblePages)
+  // pagination(options.page, options.visiblePages)
 }
  // настройки блока пагинации
 const options = {
-  //  totalItems: 20000,
+   totalItems: 20000,
      itemsPerPage: 20,
-    //  visiblePages: 3,
+     visiblePages: 3,
      page: 1,
      centerAlign: false,
      firstItemClassName: 'tui-first-child-x',
@@ -71,7 +71,7 @@ if ((clickOnSearchButton == false) && (inputQuery == "")) {
   if (countOfPages <= 5) {
        options.visiblePages= countOfPages
   } else { options.visiblePages = 5 }
-  pagination(options.page, options.visiblePages)
+  pagination(options.page, options)
 }
 async function pagination(page) {
   const pagination = new Pagination(container, { ...options });
@@ -79,7 +79,7 @@ async function pagination(page) {
   pagination.getCurrentPage();
   pagination.on('afterMove', async ( { page }) => {
     trendingMovies.clickPage = page
-    if ((clickOnSearchButton == false) && (inputQuery == "")) {
+    if ((clickOnSearchButton === false) && (inputQuery === "")) {
         clearGalleryTrendingMovi();
         const data = await trendingMovies.fetchTrending();
         console.log("DATA", data);
@@ -95,16 +95,17 @@ async function pagination(page) {
           renderGalleryTrendingMovie(film);
         });
   }
-    if ((clickOnSearchButton == true) && (inputQuery != "")) {
-      
-      responseForQuery(KEY, inputQuery, page)
-        .then(async (data) => {
-          const arrayOfFilms = data.results;
+    if ((clickOnSearchButton === true) && (inputQuery !== "")) 
+    {
+      console.log("PAGE", page);
+      console.log("inputQuery", inputQuery);
+      await responseForQuery(KEY, inputQuery, page)
+        .then((data) => {
           clearGalleryTrendingMovi();
             // ПОИСК - ПАГИНАЦИЯ
-            if(data)
+            if(data.results)
             {
-             await data.results.map(film => 
+             data.results.map(film => 
                 {
                   film.genres = genreLoader.getGenres(film.genre_ids);
                   // console.log("ЖАНРЫ = ", genres);
@@ -116,7 +117,7 @@ async function pagination(page) {
                 });
             }
 
-          });
+          }).catch(e => console.log(e));
     }
   });
   document.addEventListener('unload', localStorage.setItem('currentQuery', ""))
