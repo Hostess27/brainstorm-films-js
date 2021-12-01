@@ -118,9 +118,9 @@ async function pagination(page) {
           clearGalleryTrendingMovi();
             // arrayOfFilms.map(film => renderGalleryTrendingMovie(film)
             // );
-            if(data)
+            if(data.results)
             {
-              data.map(film => 
+              data.results.map(film => 
                 {
                   let genres =  genreLoader.getGenres(film.genre_ids);
                   if (genres.length > 3) 
