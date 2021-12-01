@@ -33,7 +33,7 @@ async function getFormTextContent(evt) {
     
         const data = await searchForQuery(KEY, searchFormInput.value, currentPage);
         
-        if (data.results) {
+        if (data.results.length > 0) {
             ulListRef.innerHTML = ``;
             
             //Общее кол-во найденных фильмов
