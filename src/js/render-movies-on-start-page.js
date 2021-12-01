@@ -24,18 +24,16 @@ async function renderMovieOnStartPage() {
         text: 'Loading Error',
       });
   }
+
   if(data)
   {
     data.map(film => 
       {
-        let genres =  genreLoader.getGenres(film.genre_ids);
-        if (genres.length > 3) 
+        film.genres = genreLoader.getGenres(film.genre_ids);
+        // console.log("ЖАНРЫ = ", genres);
+        if (film.genres.length > 3) 
         {
-          film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
-        }
-        else
-        {
-           film.genres = genres;
+          film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
         }
         renderGalleryTrendingMovie(film);
         removeSpinner();

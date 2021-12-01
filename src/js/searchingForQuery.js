@@ -16,13 +16,12 @@ const formValueFef = document.querySelector(".search-button-js");
 const ulListRef = document.querySelector(".gallery");
 const searchFormInput = document.querySelector('.search-form__input');
 const container = document.getElementById('tui-pagination-container');
-const currentPage = 1;
+let currentPage = 1;
 
 //Считываю текст в инпуте 
 formValueFef.addEventListener('click', getFormTextContent);
 
 async function getFormTextContent(evt) {
-    await genreLoader.loadGenresList();
     //Выключаю автоматическую перезагрузку страницы
     evt.preventDefault();
     container.classList.remove('visually-hidden')
@@ -32,7 +31,7 @@ async function getFormTextContent(evt) {
     
         const data = await searchForQuery(KEY, searchFormInput.value, currentPage);
         
-        if (data.results.length > 0) {
+        if (data.results) {
             ulListRef.innerHTML = ``;
             
             //Общее кол-во найденных фильмов
@@ -40,29 +39,18 @@ async function getFormTextContent(evt) {
             const results = data.results;
             //Общее кол-во найденных страниц
             const pages = data.total_pages;
-            // success({
-            // title: 'Success!',
-            // text: `Success! There are ${total} films in ${pages} page(s)`,
-            // })
-        
-            if(data)
-            {
-                data.results.map(film => 
+            data.results.map(film => 
+                {
+                    film.genres = genreLoader.getGenres(film.genre_ids);
+                    // console.log("ЖАНРЫ = ", genres);
+                    if (film.genres.length > 3) 
                     {
-                      let genres =  genreLoader.getGenres(film.genre_ids);
-                      if (genres.length > 3) 
-                      {
-                        film.genres = [...genres.slice(0, 3), { id: '00000', name: 'other...' }];
-                      }
-                      else
-                      {
-                         film.genres = genres;
-                      }
+                        film.genres = [...film.genres.slice(0, 3), { id: '00000', name: 'other...' }];
+                    }
                         ulListRef.insertAdjacentHTML('afterbegin', templateQuery(film));
                         searchFormInput.value = "";
                         removeSpinner();
-                    });
-            }
+                });
                            
         } else {
             ulListRef.innerHTML = ``;
