@@ -1,0 +1,346 @@
+.backdrop-team {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: $backdrop-background;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms $transition-cubic, visibility 250ms $transition-cubic;
+  overflow: auto;
+
+  .modal-team {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 100vw;
+    max-height: 100vh;
+    max-width: 280px;
+
+    background-color: $modal-background;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: transform 250ms $transition-cubic, opacity 250ms $transition-cubic;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      max-width: 618px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      max-width: 882px;
+    }
+  }
+}
+
+.backdrop--is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  .modal-team {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    transition: transform 250ms $transition-cubic, opacity 250ms $transition-cubic;
+  }
+}
+
+.modal-team {
+  .modal-team__btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    background-color: $modal-background;
+    cursor: pointer;
+    fill: #000000;
+    transition: fill 250ms $transition-cubic;
+
+    @media screen and (min-width: 768px) {
+      top: 12px;
+      right: 12px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      top: 18px;
+      right: 18px;
+    }
+  }
+
+  .modal-team__icon-close {
+    display: block;
+    width: 100%;
+  }
+
+  .modal-team_form-order {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.modal-team__btn-close {
+  transition: 0.6s;
+  &:hover,
+  &:focus {
+    fill: $theme-orange;
+    transform: rotate(90deg);
+    transition: 0.6s;
+  }
+}
+
+body.modal-team-open {
+  overflow: hidden;
+}
+
+.modal-team__header {
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center;
+  color: $theme-orange;
+  text-shadow: 1px 1px 1px #000;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 32px;
+  }
+}
+
+.modal-team__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0 auto;
+  background-color: $background-main-container;
+  padding-top: 15px;
+}
+
+.modal-team__item {
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: block;
+  list-style: none;
+  flex-basis: calc(100% / 2 - 20px);
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc(100% / 4 - 20px);
+    margin-right: 10px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    flex-basis: calc(100% / 4 - 30px);
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+  }
+}
+
+.modal-team__item:hover,
+.modal-team__item:focus {
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
+  transform: scale(1.05);
+  transition: box-shadow 250ms $transition-cubic, transform 250ms $transition-cubic;
+}
+
+.modal-team__wrapper {
+  cursor: pointer;
+  object-fit: cover;
+  flex-grow: 1;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.userImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  width: 120px;
+  height: 180px;
+
+  @media screen and (min-width: 768px) {
+    width: 134.5px;
+    height: 201.75px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 190.5px;
+    height: 285.75px;
+  }
+}
+
+.qr {
+  padding: 30px 0;
+}
+
+.modal-team__datails {
+  display: flex;
+  align-items: center;
+  color: $theme-orange;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.modal-team__separator {
+  margin-right: 5px;
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    display: inline-block;
+  }
+}
+
+.modal-team__name {
+  display: flex;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.333;
+  margin: 10px 0 0 5px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.modal-team__element {
+  font-family: Roboto, sans-serif;
+  margin-right: 2px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.333;
+
+  @media screen and (min-width: 768px) {
+    font-size: 11px;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 12px;
+  }
+}
+
+.modal-team__work {
+  margin-right: 16px;
+  @media screen and (min-width: 768px) {
+    margin-right: 25px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-right: 0;
+  }
+}
+
+.modal-team__git {
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0px 5px 0px 0px;
+}
+
+.modal-team__icon-git {
+  margin-top: 10px;
+  transition: 0.6s;
+  &:hover,
+  &:focus {
+    fill: $theme-orange;
+    transition: 0.6s;
+  }
+}
+
+.modal-team__bio {
+  display: flex;
+}
+
+// Fliper
+
+/* весь контейнер поддерживает перспективу */
+.flip-container {
+  perspective: 1000;
+}
+
+.flip-container,
+.front,
+.back {
+  width: 120px;
+  height: 180px;
+
+  @media screen and (min-width: 768px) {
+    width: 134.5px;
+    height: 201.75px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 190.5px;
+    height: 285.75px;
+  }
+}
+
+/* здесь находится скорость перевертывания */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* скройте обратную сторону во время переворота */
+.front,
+.back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* лицевая сторона размещена над обратной */
+.front {
+  z-index: 2;
+}
+
+/* обратная, изначально скрытая сторона */
+.back {
+  transform: rotateY(180deg);
+}
+
+//Switch theme
+
+body.dark-theme {
+  .modal-team {
+    background-color: #333333;
+    color: $white;
+
+    .modal-team__btn-close {
+      background-color: #333333;
+      fill: $white;
+      transition: 0.6s;
+    }
+
+    .modal-team__btn-close {
+      &:hover,
+      &:focus {
+        fill: $theme-orange;
+      }
+    }
+  }
+  .modal-team__list {
+    background-color: #333333;
+  }
+}

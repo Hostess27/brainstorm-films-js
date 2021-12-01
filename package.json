@@ -24,5 +24,19 @@
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "@pnotify/core": "^5.2.0",
+    "@pnotify/mobile": "^5.2.0",
+    "animate.css": "^4.1.1",
+    "autoprefixer": "^10.4.0",
+    "axios": "^0.24.0",
+    "chokidar": "^3.5.2",
+    "firebase": "^9.5.0",
+    "handlebars": "^4.7.7",
+    "lodash.throttle": "^4.1.1",
+    "normalize.css": "^8.0.1",
+    "notifyjs": "^3.0.0",
+    "tui-pagination": "^3.4.1"
   }
 }

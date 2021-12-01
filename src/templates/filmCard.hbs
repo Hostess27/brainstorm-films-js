@@ -1,0 +1,33 @@
+<li class="gallery__item" data-id="{{id}}">
+    <div class="gallery__image-wrapper">
+        {{#if poster_path}}
+        <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" {{#if original_title}} alt="{{original_title}}"{{else}} alt="No descriptions"{{/if}}>
+        {{else}}<img src="https://via.placeholder.com/294x441/808080/545454&text=NO POSTER :(" alt="No poster">{{/if}}
+    </div>
+    <div class="gallery__description">
+        {{#if title}}
+        <p class="gallery__info-name">{{title}}</p>
+        {{else}}<p class="gallery__info-name">No title</p>{{/if}}
+        <ul class="gallery__info-genre">
+            {{#if genres}}
+            <li class="gallery__info-item">
+                {{#each genres}}
+                {{#if @last}} {{name}}{{else}} {{name}}, {{/if}}
+                {{/each}}
+            </li>
+            {{else}}<li class="gallery__info-item">
+                No genres
+            </li>{{/if}}
+            {{#if release_date}}
+            <li class="gallery__info-item gallery__date">
+                | {{release_date}}
+            </li>
+            {{else}}<li class="gallery__info-item gallery__date">
+                | 0000
+            </li>{{/if}}
+            {{#if vote_average}}
+            <li class="gallery__info-item gallery__info-rating">{{vote_average}}</li>
+            {{else}}<li class="gallery__info-item gallery__info-rating">0</li>{{/if}}
+        </ul>
+    </div>
+</li>

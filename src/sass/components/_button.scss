@@ -1,0 +1,50 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  //   margin: 0;
+  //   border: none;
+  height: 44px;
+  max-width: 136px;
+  width: 100%;
+  border-radius: 5px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $white;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  transition: 250ms $transition-cubic;
+}
+
+.button:hover,
+.button--current {
+  //   @extend %button;
+  background-color: $theme-orange;
+  border: 1px solid $theme-orange;
+  color: $white;
+}
+
+.button--white {
+  //   @extend %button;
+  background-color: transparent;
+  border: 1px solid $white;
+}
+
+.button--orange {
+  background-color: $theme-orange;
+  border: 1px solid $theme-orange;
+  color: $white;
+}
+
+.button--black {
+  //   @extend %button;
+  background-color: transparent;
+  border: 1px solid $black;
+  color: $black;
+}

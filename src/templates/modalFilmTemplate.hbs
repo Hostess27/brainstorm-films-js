@@ -1,0 +1,72 @@
+<div class='film-detail__image-container'>
+  {{#if poster_path}}
+    <img class='film-detail__image' src="https://image.tmdb.org/t/p/w500{{poster_path}}" {{#if original_title}} alt="{{original_title}}"{{else}} alt="No descriptions"{{/if}}>
+  {{else}}<img class="film-detail__image" src="https://via.placeholder.com/294x441/808080/545454&text=NO POSTER :(" alt="No poster">{{/if}}
+</div>
+<div class='film-detail__content-container'>
+  <div class='film-detail_id' data-id='{{id}}'></div>
+  {{#if this.title}}
+  <h2 class='film-detail_title'>{{this.title}}</h2>
+  {{else}}
+  <h2 class='film-detail_title'>No title</h2>
+  {{/if}}
+  <div class='film-detail__statistics'>
+    <div class='film-detail__filds'>
+      <span class='film-detail__vote-fild'>Vote / Votes</span>
+      <span class='film-detail__popularity-fild'>Popularity</span>
+      <span class='film-detail__original-title-fild'>Original Title</span>
+      <span class='film-detail__genre-fild'>Genre</span>
+    </div>
+    <div class='film-detail__values'>
+      <span class='film-detail__vote-value'>
+        {{#if vote_average}}
+        <span class='film-detail__values--orange'>{{vote_average}}</span>
+        {{else}}
+        <span class='film-detail__values--orange'>0</span>
+        {{/if}}
+        /
+        {{#if vote_count}}
+        <span class='film-detail__values--black'>{{vote_count}}</span>
+        {{else}}
+        <span class='film-detail__values--black'>0</span>
+        {{/if}}
+      </span>
+      {{#if popularity}}
+      <span class='film-detail__popularity-value film-detail__values--black'>{{popularity}}</span>
+      {{else}}
+      <span class='film-detail__popularity-value film-detail__values--black'>0</span>
+      {{/if}}
+      {{#if original_title}}
+      <span
+        class='film-detail__original-title-value film-detail__values--black'
+      >{{original_title}}</span>
+      {{else}}
+      <span
+        class='film-detail__original-title-value film-detail__values--black'
+      >0</span>
+      {{/if}}
+      <span class='film-detail__genre-value film-detail__values--black'>
+        {{#if genres}}
+        {{#each genres}}
+          <span class='film-detail__values--black'>{{#if @last}} {{name}}{{else}}
+              {{name}},
+            {{/if}}</span>
+        {{/each}}
+        {{else}}
+        <span class='film-detail__values--black'>No genres</span>
+        {{/if}}
+      </span>
+    </div>
+  </div>
+  <div class='film-detail_trailer'>
+    <div id="player"></div>
+  </div>
+  <h3 class='film-detail__about'>About</h3>
+  <div class="film-detail__description-container">
+  <div class='film-detail__description'>{{overview}}</div>
+  </div>
+  <div class='film-details__buttons'>
+    <button class='film-details__buttons-add-to-watched' id='add-to-watched'>add to Watched</button>
+    <button class='film-details__buttons-add-to-queue' id='add-to-queue'>add to queue</button>
+  </div>
+</div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka</title>
+    <title>Заголовок страницы</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -14,31 +14,23 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
-    <a name="top"></a>
     <include src="./partials/userAuthorization.html"></include>
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/header-index.html"></include>
+    <!-- <button class="test-btn" data-modal-open>Открыть модалку</button> -->
+    <!-- <include src="./partials/header-index.html"></include> -->
     <include src="./partials/header-liberary.html"></include>
-
-    <!-- <include src="./partials/header-liberary.html"></include> -->
     <!-- <include src="./partials/elements.html"></include> -->
-    <include src="./partials/theme-switcher.html"></include>
+
+    <include src="./partials/my-library.html"></include>
     <include src="./partials/main-container.html"></include>
-    <include src="./partials/up-btn.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
     <include src="./partials/spinner.html"></include>
     <include src="./partials/modalTeam.html"></include>
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-    <script src="./index.js"></script>
+    <script src="./lib.js"></script>
   </body>
 </html>

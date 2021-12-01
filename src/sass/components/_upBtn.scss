@@ -1,0 +1,31 @@
+.up-btn-container {
+  cursor: pointer;
+  position: fixed;
+  z-index: 10;
+  right: 3%;
+  bottom: 5%;
+  :hover,
+  :focus {
+    fill: $theme-orange;
+    stroke: $theme-orange;
+  }
+}
+
+.up-btn {
+  fill: $logo-icon-grey;
+  fill-opacity: 0.7;
+  stroke: $logo-icon-grey;
+  stroke-opacity: 0.7;
+  display: none;
+  width: 15vmin;
+  height: 15vmin;
+
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    width: 12vmin;
+    height: 12vmin;
+  }
+  @media screen and (min-width: 768px) {
+    width: 8vmin;
+    height: 8vmin;
+  }
+}
